@@ -90,13 +90,16 @@ test("compression never uses private motivations", async () => {
   assert.match(readFileSync(join(runDir, "compression/borges__of__leonardo.md"), "utf8"), /usesPrivateMotivation: false/);
 });
 
-test("no self-voting: nobody ranks an idea they originated or their own takes", async () => {
+test("no self-voting on unique ideas or takes; converged ideas are ranked by everyone", async () => {
   const repo = seeded();
   const { runDir } = await tape(repo, "2026-10-30");
   const pool = JSON.parse(readFileSync(join(runDir, "pool.json"), "utf8")).ideas;
   const { ballots } = JSON.parse(readFileSync(join(runDir, "votes/ballots.json"), "utf8"));
   for (const b of ballots) {
-    for (const id of b.ideas) assert.ok(!pool.find((i) => i.id === id).characters.includes(b.voter), `${b.voter} ranked own idea ${id}`);
+    for (const id of b.ideas) {
+      const idea = pool.find((i) => i.id === id);
+      if (idea.category !== "converged") assert.ok(!idea.characters.includes(b.voter), `${b.voter} ranked own unique idea ${id}`);
+    }
     for (const id of b.takes) assert.ok(!id.startsWith(`T-${b.voter}-`), `${b.voter} ranked own take ${id}`);
     assert.ok(b.takes.includes("T-final"));
   }
@@ -157,4 +160,47 @@ test("an invalid file in the window is skipped and recorded, not fatal", async (
   const { manifest } = await tape(repo, "2026-10-30");
   assert.equal(manifest.window.skipped_inputs.length, 1);
   assert.equal(manifest.window.input_count, 3);
+});
+
+test("converged ideas are ranked by all voters and tracked as a category", async () => {
+  const repo = seeded();
+  const { runDir } = await tape(repo, "2026-10-30");
+  const pool = JSON.parse(readFileSync(join(runDir, "pool.json"), "utf8")).ideas;
+  const converged = pool.filter((i) => i.characters.length > 1);
+  const unique = pool.filter((i) => i.characters.length === 1);
+  assert.ok(converged.length > 0 && unique.length > 0, "stub should produce both categories");
+  assert.ok(pool.every((i) => i.category === (i.characters.length > 1 ? "converged" : "unique")));
+  const { ballots } = JSON.parse(readFileSync(join(runDir, "votes/ballots.json"), "utf8"));
+  for (const b of ballots) for (const i of converged) assert.ok(b.ideas.includes(i.id), `${b.voter} must rank converged ${i.id}`);
+  assert.ok(ballots.some((b) => b.ranked_own_origin.length > 0), "originator bias must be visible");
+  const tally = JSON.parse(readFileSync(join(runDir, "votes/tally.json"), "utf8"));
+  assert.ok(tally.ideas.every((r) => r.category && Array.isArray(r.originators)));
+  const perf = JSON.parse(readFileSync(join(runDir, "diffs/category-performance.json"), "utf8"));
+  assert.equal(perf.categories.converged.count, converged.length);
+  assert.ok(perf.categories.converged.mean_position >= 0 && perf.categories.converged.mean_position <= 1);
+});
+
+test("with convergedRankable off, originators cannot rank converged ideas", async () => {
+  const repo = seeded();
+  const window = computeWindow({ repo, date: "2026-10-30" });
+  const config = structuredClone(CONFIG);
+  config.vote.convergedRankable = false;
+  const { runDir } = await runTaping({ repo, window, config });
+  const pool = JSON.parse(readFileSync(join(runDir, "pool.json"), "utf8")).ideas;
+  const { ballots } = JSON.parse(readFileSync(join(runDir, "votes/ballots.json"), "utf8"));
+  for (const b of ballots) for (const id of b.ideas) assert.ok(!pool.find((i) => i.id === id).characters.includes(b.voter));
+});
+
+test("a creative's reaction is joined to the idea's previous category and rank", async () => {
+  const repo = seeded();
+  const day1 = await tape(repo, "2026-10-30");
+  const pool1 = JSON.parse(readFileSync(join(day1.runDir, "pool.json"), "utf8")).ideas;
+  write(repo, "inputs/2026-10-31/pick-one.md", input({ kind: "reaction", source: undefined, title: "Keep this one", reaction: { action: "pick", target: pool1[0].id, reason: "yes" } }));
+  commit(repo, "reaction");
+  const day2 = await tape(repo, "2026-10-31");
+  const perf = JSON.parse(readFileSync(join(day2.runDir, "diffs/category-performance.json"), "utf8"));
+  assert.equal(perf.creative_reactions_on_previous_run.length, 1);
+  const r = perf.creative_reactions_on_previous_run[0];
+  assert.equal(r.category, pool1[0].category);
+  assert.ok(Number.isInteger(r.previous_rank) || r.previous_rank === null);
 });

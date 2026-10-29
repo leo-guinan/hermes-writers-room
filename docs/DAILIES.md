@@ -161,9 +161,15 @@ diffs/          vs-previous, convergence, vote-splits, rehearsal-to-take,
 - **Presentation layer** (a Pages build over `dailies/`).
 - **Real compression-error and voice-drift diffs** (the files exist as placeholders).
 
-## Stub behavior to revisit
+## Convergence categories
 
-An idea that *every* character reached independently cannot be ranked by anyone, because nobody may
-vote on an idea they originated. That is consistent with the no-self-vote rule, but it hides the
-strongest convergence from the ballots. `diffs/convergence.json` still shows it. Worth deciding
-whether converged ideas should be rankable by everyone.
+Every pool idea has a `category`: `converged` (more than one character reached it independently),
+`unique` (one), or `carried` (kept by a creative's pick). Converged ideas are ranked by **everyone,
+originators included** (`vote.convergedRankable`); unique ideas keep the no-self-vote rule, as do takes.
+Each ballot lists `ranked_own_origin` so any originator bias is visible, and `votes/tally.json` rows carry
+`category` and `originators`.
+
+`diffs/category-performance.json` is the tracking record: mean ballot position per category for the
+run, plus, for each creative reaction (pick/remix/reject) in the window, the category and rank that
+idea had in the previous run. Comparing room agreement with how creatives later react is meant to be
+done over many dailies; one run proves nothing.

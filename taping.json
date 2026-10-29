@@ -38,6 +38,7 @@
     "ballot": "ranked",
     "blind": true,
     "selfVote": false,
+    "convergedRankable": true,
     "tiebreak": "producer",
     "advisory": true
   },

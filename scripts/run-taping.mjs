@@ -142,7 +142,9 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
   const droppedRejected = [...byId.keys()].filter((id) => rejected.has(id));
   for (const id of droppedRejected) byId.delete(id);
   const ranked = [...byId.values()].sort((a, b) => b.characters.length - a.characters.length || a.id.localeCompare(b.id));
-  const poolIdeas = ranked.slice(0, config.pool.maxIdeas);
+  // category: converged = more than one character reached it independently; unique = one; carried = kept by a creative's pick.
+  const categoryOf = (i) => (i.characters.length > 1 ? "converged" : i.characters.length === 1 ? "unique" : "carried");
+  const poolIdeas = ranked.slice(0, config.pool.maxIdeas).map((i) => ({ ...i, category: categoryOf(i) }));
   const overCap = ranked.slice(config.pool.maxIdeas).map((i) => i.id);
   emit("pool.json", { run: window.runId, ideas: poolIdeas, dropped_over_cap: overCap, dropped_rejected: droppedRejected });
 
@@ -172,14 +174,18 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
   const sameSet = (a, b) => a.length === b.length && new Set(a).size === a.length && [...a].sort().join() === [...b].sort().join();
   const ballots = [];
   for (const voter of chars) {
-    const ideas = poolIdeas.filter((i) => config.vote.selfVote || !i.characters.includes(voter));
+    // Converged ideas are ranked by everyone, originators included: otherwise the ideas the room
+    // agreed on most would be the ones nobody could rank. Unique ideas keep the no-self-vote rule.
+    const convergedRankable = config.vote.convergedRankable !== false;
+    const ideas = poolIdeas.filter((i) => config.vote.selfVote || (convergedRankable && i.category === "converged") || !i.characters.includes(voter));
     const takes = takeIds.filter((t) => config.vote.selfVote || t.author !== voter);
     const blind_labels = { ideas: labelsFor(voter, ideas), takes: labelsFor(voter, takes) };
     const ideaCards = Object.entries(blind_labels.ideas).map(([label, id]) => ({ label, text: `${poolById.get(id).text}` }));
     const takeCards = Object.entries(blind_labels.takes).map(([label, id]) => ({ label, summary: takeSummary(id) }));
     const resp = await llm.vote({ voter, ideaCards, takeCards, seed });
     if (resp && sameSet(resp.ideas, Object.keys(blind_labels.ideas)) && sameSet(resp.takes, Object.keys(blind_labels.takes))) {
-      ballots.push({ voter, blind_labels, ideas: resp.ideas.map((l) => blind_labels.ideas[l]), takes: resp.takes.map((l) => blind_labels.takes[l]) });
+      const rankedIdeas = resp.ideas.map((l) => blind_labels.ideas[l]);
+      ballots.push({ voter, blind_labels, ideas: rankedIdeas, takes: resp.takes.map((l) => blind_labels.takes[l]), ranked_own_origin: rankedIdeas.filter((id) => poolById.get(id).characters.includes(voter)) });
     } else {
       quality.invalid_ballots.push({ voter, reason: resp ? "labels were not each used exactly once" : "no usable ballot returned" });
       ballots.push({ voter, blind_labels, invalid: true });
@@ -192,8 +198,8 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
     const rows = Object.entries(pts).map(([id, points]) => ({ id, points })).sort((a, b) => b.points - a.points || a.id.localeCompare(b.id));
     return rows.map((r, i) => ({ ...r, tie: rows.some((o, j) => j !== i && o.points === r.points) }));
   };
-  emit("votes/ballots.json", { advisory: config.vote.advisory, blind: config.vote.blind, self_vote: config.vote.selfVote, ballots });
-  emit("votes/tally.json", { advisory: config.vote.advisory, method: "borda", tiebreak: config.vote.tiebreak, ballots_counted: counted.length, ballots_invalid: ballots.length - counted.length, ideas: borda("ideas"), takes: borda("takes") });
+  emit("votes/ballots.json", { advisory: config.vote.advisory, blind: config.vote.blind, self_vote: config.vote.selfVote, converged_rankable: config.vote.convergedRankable !== false, ballots });
+  emit("votes/tally.json", { advisory: config.vote.advisory, method: "borda", tiebreak: config.vote.tiebreak, ballots_counted: counted.length, ballots_invalid: ballots.length - counted.length, ideas: borda("ideas").map((r) => ({ ...r, category: poolById.get(r.id).category, originators: poolById.get(r.id).characters })), takes: borda("takes") });
 
   // ---- 6. diffs: everything a presentation layer needs to show differences -----------------
   const ids = new Set(poolIdeas.map((i) => i.id));
@@ -217,6 +223,23 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
     const v = Object.values(positions);
     return { id: i.id, positions, spread: v.length ? Math.max(...v) - Math.min(...v) : 0 };
   }).sort((a, b) => b.spread - a.spread || a.id.localeCompare(b.id)));
+  // Track converged vs unique vs carried, so the room's agreement can be compared with how ideas do later.
+  // position: 1 = ranked first on a ballot, 0 = last. The reactions section joins creatives' picks and
+  // rejects (this window's inputs) to the category and rank those ideas had in the PREVIOUS run.
+  const prevTally = prevId && existsSync(join(root, prevId, "votes/tally.json")) ? JSON.parse(readFileSync(join(root, prevId, "votes/tally.json"), "utf8")) : null;
+  const prevById = new Map((prevPool?.ideas ?? []).map((i) => [i.id, i]));
+  const prevRank = new Map((prevTally?.ideas ?? []).map((r, i) => [r.id, i + 1]));
+  const byCategory = {};
+  for (const i of poolIdeas) {
+    const pos = counted.filter((b) => rank(b, i.id) >= 0).map((b) => 1 - rank(b, i.id) / Math.max(1, b.ideas.length - 1));
+    const c = (byCategory[i.category] ??= { ideas: [], ballots: 0, position_sum: 0 });
+    c.ideas.push(i.id); c.ballots += pos.length; c.position_sum += pos.reduce((a, x) => a + x, 0);
+  }
+  emit("diffs/category-performance.json", {
+    categories: Object.fromEntries(Object.entries(byCategory).map(([k, c]) => [k, { count: c.ideas.length, ideas: c.ideas, ballots: c.ballots, mean_position: c.ballots ? +(c.position_sum / c.ballots).toFixed(4) : null }])),
+    creative_reactions_on_previous_run: reactions.filter((r) => prevById.has(r.target)).map((r) => ({ target: r.target, action: r.action, category: prevById.get(r.target).category ?? "unknown", previous_rank: prevRank.get(r.target) ?? null })),
+    note: "mean_position: 1 = always ranked first, 0 = always last. Reactions are advisory outcomes from creatives; the join to category and prior rank is how room agreement gets compared with actual performance.",
+  });
   emit("diffs/rehearsal-to-take.json", poolIdeas.map((i) => ({ id: i.id, origins: i.origins, used_in_turns: turns.filter((t) => t.uses.includes(i.id)).map((t) => t.turn) })));
   emit("diffs/compression-error.json", { status: "not-computed", note: "Needs real compressions and real takes: predicted vs actual behaviour per ordered pair." });
   emit("diffs/voice-drift.json", { status: "not-computed", note: "Needs real lines compared against each character's pinned seed." });
@@ -225,7 +248,7 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
 
   // ---- 7. index, then the manifest (last) --------------------------------------------------
   const problems = quality.dropped_moves.length + quality.invalid_ballots.length + stats.failures.length;
-  emit("INDEX.md", `# Dailies · ${window.runId}\n\n${llm.mode === "stub" ? "> STUB RUN: structure is real, text is placeholder.\n\n" : ""}- Window: ${window.fromTag ?? "start of history"} → \`${window.cutoff_sha.slice(0, 10)}\` (${inputs.length} inputs${skippedInputs.length ? `, ${skippedInputs.length} skipped` : ""})\n- Characters: ${chars.map(cap).join(", ")}\n- Rehearsal takes: ${chars.length * N} · moves: ${moves.length} · pool ideas: ${poolIdeas.length}${prevId ? ` · previous run: ${prevId}` : ""}\n- Model: ${llm.mode} · calls: ${stats.calls}${problems ? ` · **${problems} problems recorded** (diffs/quality.json)` : ""}\n- Votes are advisory; ties go to the producer.\n\n## Read\n- [take/transcript.md](take/transcript.md)\n- [votes/tally.json](votes/tally.json)\n- [pool.json](pool.json)\n- diffs/: vs-previous, convergence, vote-splits, rehearsal-to-take, quality\n`);
+  emit("INDEX.md", `# Dailies · ${window.runId}\n\n${llm.mode === "stub" ? "> STUB RUN: structure is real, text is placeholder.\n\n" : ""}- Window: ${window.fromTag ?? "start of history"} → \`${window.cutoff_sha.slice(0, 10)}\` (${inputs.length} inputs${skippedInputs.length ? `, ${skippedInputs.length} skipped` : ""})\n- Characters: ${chars.map(cap).join(", ")}\n- Rehearsal takes: ${chars.length * N} · moves: ${moves.length} · pool ideas: ${poolIdeas.length}${prevId ? ` · previous run: ${prevId}` : ""}\n- Model: ${llm.mode} · calls: ${stats.calls}${problems ? ` · **${problems} problems recorded** (diffs/quality.json)` : ""}\n- Votes are advisory; ties go to the producer.\n\n## Read\n- [take/transcript.md](take/transcript.md)\n- [votes/tally.json](votes/tally.json)\n- [pool.json](pool.json)\n- diffs/: vs-previous, convergence, category-performance, vote-splits, rehearsal-to-take, quality\n`);
   const manifest = {
     schema: "dailies/1",
     run: window.runId,
