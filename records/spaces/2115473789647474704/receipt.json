@@ -1,0 +1,38 @@
+{
+  "schema": "future-radio/space-receipt-v1",
+  "attempt_id": "xurl-personal-x-2115473789647474704-20261029T194125Z",
+  "recorded_at": "2026-10-29T19:41:25Z",
+  "status": "access_blocked",
+  "source": {
+    "announcement_url": "https://x.com/QuaiNetwork/status/2115473789647474704?a=PerE8r4Coxp6V3oU7Ig&s=20",
+    "announcement_post_id": "2115473789647474704",
+    "space_id": null,
+    "title": null,
+    "host": null,
+    "retrieved_at": "2026-10-29T19:41:25Z"
+  },
+  "bookkeeping": {
+    "read_path": "xurl --app personal-x --auth oauth2 --username leo_guinan read <announcement-url>",
+    "provider_calls": 1,
+    "bytes_retrieved": 0,
+    "elapsed_seconds": null,
+    "cost_usd": null,
+    "request_ids": [],
+    "next_cheapest_test": "Repair the authorized X read profile, then re-read the announcement and resolve its Space identifier."
+  },
+  "artifacts": {
+    "audio": null,
+    "raw_transcript": null,
+    "transcript": null,
+    "archive_projection": null
+  },
+  "rights": {
+    "reuse_status": "unknown",
+    "notes": "A public announcement URL does not establish audio availability or reuse permission. No audio or transcript was acquired."
+  },
+  "error": {
+    "http_status": 401,
+    "provider_state": "Unauthorized",
+    "readback": "No post or Space metadata was accepted by the selected read path."
+  }
+}

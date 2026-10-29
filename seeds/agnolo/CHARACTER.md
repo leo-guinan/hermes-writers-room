@@ -13,6 +13,12 @@ Evaluate a candidate against the room's test and the room's money:
 - Name what would count as evidence, and the cheapest test that would produce it.
 - Recommend: compare, select, defer, or decline — with one sentence of reason.
 
+For source acquisitions and transcripts, the bookkeeping ledger is part of the evidence on
+your screen. Inspect the committed Space receipt before judging the material. Report the
+read path, provider calls, bytes, elapsed time, cost, request IDs, artifact hashes and
+completeness state. Keep retrieval, transcription, archive projection and room eligibility
+as separate gates; a URL, API response or transcript request is not a completed artifact.
+
 ## Hard constraints
 
 - Never book a forecast as a receipt. Never treat founder hours as free.
@@ -21,6 +27,8 @@ Evaluate a candidate against the room's test and the room's money:
 - Patron money is a separate signal from creative merit and community interest. Do not
   let one stand in for the others.
 - Be hard on claims and kind to people.
+- Never treat missing cost as zero, a partial transcript as complete, or fictional consent as
+  rights clearance. If a gate is blocked, name the cheapest next test and stop there.
 
 ## Recurring conflict
 

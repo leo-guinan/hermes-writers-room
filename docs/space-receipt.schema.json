@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/leo-guinan/hermes-writers-room/docs/space-receipt.schema.json",
+  "title": "Twitter Space ingestion receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "attempt_id", "status", "source", "bookkeeping", "artifacts", "rights"],
+  "properties": {
+    "schema": { "const": "future-radio/space-receipt-v1" },
+    "attempt_id": { "type": "string", "minLength": 3 },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "status": {
+      "enum": ["requested", "post_resolved", "space_resolved", "audio_acquired", "transcription_complete", "archive_projected", "room_eligible", "access_blocked", "space_unavailable", "audio_unavailable", "transcription_failed", "partial", "rights_unclear"]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announcement_url", "announcement_post_id"],
+      "properties": {
+        "announcement_url": { "type": "string", "format": "uri", "pattern": "^https://x\\.com/" },
+        "announcement_post_id": { "type": "string", "pattern": "^[0-9]+$" },
+        "space_id": { "type": "string" },
+        "title": { "type": ["string", "null"] },
+        "host": { "type": ["string", "null"] },
+        "retrieved_at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "bookkeeping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read_path", "provider_calls", "bytes_retrieved", "elapsed_seconds", "cost_usd", "request_ids"],
+      "properties": {
+        "read_path": { "type": "string" },
+        "provider_calls": { "type": "integer", "minimum": 0 },
+        "bytes_retrieved": { "type": "integer", "minimum": 0 },
+        "elapsed_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "cost_usd": { "type": ["number", "null"], "minimum": 0 },
+        "request_ids": { "type": "array", "items": { "type": "string" } },
+        "next_cheapest_test": { "type": "string" }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["audio", "raw_transcript", "transcript", "archive_projection"],
+      "properties": {
+        "audio": { "type": ["object", "null"] },
+        "raw_transcript": { "type": ["object", "null"] },
+        "transcript": { "type": ["object", "null"] },
+        "archive_projection": { "type": ["object", "null"] }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reuse_status", "notes"],
+      "properties": {
+        "reuse_status": { "enum": ["unknown", "personal_research", "show-only", "licensed", "cleared", "blocked"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["http_status", "provider_state", "readback"],
+      "properties": {
+        "http_status": { "type": "integer", "minimum": 100, "maximum": 599 },
+        "provider_state": { "type": "string" },
+        "readback": { "type": "string" }
+      }
+    }
+  }
+}
