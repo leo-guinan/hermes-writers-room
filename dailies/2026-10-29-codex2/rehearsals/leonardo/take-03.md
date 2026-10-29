@@ -1,0 +1,8 @@
+# Leonardo · rehearsal take 3
+
+_Simulating the others from compression._
+
+- **M-leonardo-3-1** → P-fd70a869 (reversal): I appoint Douglas legal counsel, then reverse the ceremony: he must cross-examine me. “You wrote the adaptation, therefore you own permission”—my claim collapses under its own gears. Agnolo separates authorship, influence, and authorization; Borges inventories what the archive actually proves. We keep the joke, remove the fictional clearance, and end with a finite rights question.
+- **M-leonardo-3-2** → P-f40ad976 (object): I place three labeled objects on the table: a manuscript, a compass, and a locked case. Douglas may claim the first as authorship, the second as influence, but not open the case without actual authorization. Each character handles one object and says what it can and cannot prove. The lock clicks; no one pretends that sound is a license.
+- **M-leonardo-3-3** → P-b0e1b24c (silence): Douglas enters with a confident legal brief. I ask one question: “Who authorized this?” Then I let the room go silent. No invented consent, no magical answer from the future. Borges catalogs the missing volume; Agnolo writes the cost of pausing. The silence becomes the scene’s honest result: creative desire survives, but production waits.
+- **M-leonardo-3-4** → P-51ca299b (callback): I callback to the radio’s first promise: the future answered, but it never signed for anyone. Douglas interrupts the rehearsal and hears his appointment announced as if it were authority. He dismantles that assumption, gently and absurdly. We finish by labeling three signals—idea, influence, permission—then choose an original adaptation that needs no borrowed clearance.

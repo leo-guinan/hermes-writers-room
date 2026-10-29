@@ -1,0 +1,8 @@
+# Leonardo · rehearsal take 1
+
+_Simulating the others from compression._
+
+- **M-leonardo-1-1** → P-fd70a869 (reversal): I appoint Douglas as counsel, then reverse the appointment: he must cross-examine me. “Did your admiration acquire permission?” I answer with three sketches, each more beautiful and less admissible. Agnolo records the distinction: authorship may explain influence; it does not authorize adaptation. The scene ends with Douglas firing his client—the rehearsal.
+- **M-leonardo-1-2** → P-f1019f83 (escalation): Douglas interrupts, and every sentence raises the stakes: fictional counsel, historical author, estate, rights holder, license, compensation. I keep adding mechanisms until Agnolo stops me at the cash ceiling. We make the escalation audible as a machine running out of fuel: funny, precise, and unfinished where the law is genuinely unknown.
+- **M-leonardo-1-3** → P-b0e1b24c (silence): Douglas asks who authorized the adaptation. I begin my usual defense, then stop. The Unspoken Orchestra supplies admiration, influence, entitlement, fear, and the blank space where permission should be. Borges names the absent volume; Agnolo names the unbudgeted risk. Douglas lets the silence stand. No fictional consent becomes clearance.
+- **M-leonardo-1-4** → P-f40ad976 (object): I place three cards on the desk: AUTHOR, INFLUENCE, AUTHORIZATION. Douglas may move them, but may not merge them. The callback is my radio: it can receive a future transmission, not manufacture a license. We rehearse each card as a different sound, ending with the authorization card facedown until verified.

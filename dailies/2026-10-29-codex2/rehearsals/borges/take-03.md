@@ -1,0 +1,8 @@
+# Borges · rehearsal take 3
+
+_Simulating the others from compression._
+
+- **M-borges-3-1** → P-fd70a869 (reversal): I would let Douglas arrive demanding proof that Leonardo authored the proposed adaptation. Leonardo can show sketches and beats; Agnolo can show forecasts and receipts. Douglas then concedes that authorship establishes origin, not present authorization. The joke reverses when the counsel asks the room to document his inability to grant permission.
+- **M-borges-3-2** → P-f1019f83 (escalation): I would escalate each sentence into a narrower category: influence, authorship, ownership, authorization, legal review. Douglas keeps winning the comic argument and losing the legal one. Agnolo stops the rehearsal at the ceiling, Leonardo stops at the deliverable, and the scene ends with no clearance—only a precise list of what remains unknown.
+- **M-borges-3-3** → P-b0e1b24c (silence): I would make the central test a silence. Douglas says he wrote the source, then waits for that fact to open the door. No one moves. Borges names the historical record; Agnolo names the missing permission; Leonardo removes the borrowed motif from the board. The silence becomes the boundary between admiration and authorization.
+- **M-borges-3-4** → P-f40ad976 (object): I would place a blank rights form beside Leonardo’s storyboard. Douglas can annotate influence and authorship, but every authorization field remains empty. The object travels between them like a comic prop until it becomes the scene’s honest ending: a producible alternative, a documented question, and no fictional signature treated as clearance.

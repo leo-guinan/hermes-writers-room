@@ -1,0 +1,12 @@
+{
+  "dropped_moves": [],
+  "invalid_ballots": [
+    {
+      "voter": "leonardo",
+      "reason": "labels were not each used exactly once"
+    }
+  ],
+  "turns_without_declared_uses": [],
+  "llm_failures": [],
+  "note": "Everything a model returned that was dropped, rejected or missing. Nothing here was used."
+}

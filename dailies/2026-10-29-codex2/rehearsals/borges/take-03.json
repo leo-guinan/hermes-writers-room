@@ -1,0 +1,46 @@
+{
+  "take": "T-borges-3",
+  "character": "borges",
+  "moves": [
+    {
+      "id": "M-borges-3-1",
+      "character": "borges",
+      "take": "T-borges-3",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I would let Douglas arrive demanding proof that Leonardo authored the proposed adaptation. Leonardo can show sketches and beats; Agnolo can show forecasts and receipts. Douglas then concedes that authorship establishes origin, not present authorization. The joke reverses when the counsel asks the room to document his inability to grant permission."
+    },
+    {
+      "id": "M-borges-3-2",
+      "character": "borges",
+      "take": "T-borges-3",
+      "pool_id": "P-f1019f83",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "escalation",
+      "text": "I would escalate each sentence into a narrower category: influence, authorship, ownership, authorization, legal review. Douglas keeps winning the comic argument and losing the legal one. Agnolo stops the rehearsal at the ceiling, Leonardo stops at the deliverable, and the scene ends with no clearance—only a precise list of what remains unknown."
+    },
+    {
+      "id": "M-borges-3-3",
+      "character": "borges",
+      "take": "T-borges-3",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "I would make the central test a silence. Douglas says he wrote the source, then waits for that fact to open the door. No one moves. Borges names the historical record; Agnolo names the missing permission; Leonardo removes the borrowed motif from the board. The silence becomes the boundary between admiration and authorization."
+    },
+    {
+      "id": "M-borges-3-4",
+      "character": "borges",
+      "take": "T-borges-3",
+      "pool_id": "P-f40ad976",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "object",
+      "text": "I would place a blank rights form beside Leonardo’s storyboard. Douglas can annotate influence and authorship, but every authorization field remains empty. The object travels between them like a comic prop until it becomes the scene’s honest ending: a producible alternative, a documented question, and no fictional signature treated as clearance."
+    }
+  ]
+}

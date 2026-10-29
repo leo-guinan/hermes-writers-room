@@ -1,0 +1,19 @@
+{
+  "categories": {
+    "converged": {
+      "count": 6,
+      "ideas": [
+        "P-b0e1b24c",
+        "P-f1019f83",
+        "P-f40ad976",
+        "P-fd70a869",
+        "P-51ca299b",
+        "P-e631ceeb"
+      ],
+      "ballots": 18,
+      "mean_position": 0.5
+    }
+  },
+  "creative_reactions_on_previous_run": [],
+  "note": "mean_position: 1 = always ranked first, 0 = always last. Reactions are advisory outcomes from creatives; the join to category and prior rank is how room agreement gets compared with actual performance."
+}

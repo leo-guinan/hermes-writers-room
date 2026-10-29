@@ -45,7 +45,7 @@
   },
   "run": {
     "allowEmpty": false,
-    "llm": "stub"
+    "llm": "hermes"
   },
   "prompt": {
     "maxInputs": 30,
@@ -54,8 +54,8 @@
   },
   "hermes": {
     "bin": "hermes",
-    "provider": "openrouter",
-    "model": "anthropic/claude-sonnet-5.5",
+    "provider": "openai-codex",
+    "model": "gpt-5.6-luna",
     "toolsets": [
       "todo"
     ],
@@ -64,8 +64,7 @@
     ],
     "maxTurns": 3,
     "timeoutSeconds": 180,
-    "maxCalls": 60,
-    "apiKeyEnv": "OPENROUTER_API_KEY"
+    "maxCalls": 60
   },
-  "hermes_note": "toolsets/allowedTools: Hermes documents no tools-off mode, so characters get the near-inert `todo` toolset and any other tool_use aborts the run. Verify with the canary workflow before setting run.llm to hermes. budgetUsd is not enforced in hermes mode (no cost in stream-json); maxCalls is."
+  "hermes_note": "toolsets/allowedTools: Hermes documents no tools-off mode, so characters get the near-inert `todo` toolset and any other tool_use aborts the run. This local test uses the OpenAI Codex OAuth integration; no API key is copied into the run environment. budgetUsd is not enforced in hermes mode (no cost in stream-json); maxCalls is."
 }

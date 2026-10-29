@@ -1,0 +1,46 @@
+{
+  "take": "T-leonardo-3",
+  "character": "leonardo",
+  "moves": [
+    {
+      "id": "M-leonardo-3-1",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I appoint Douglas legal counsel, then reverse the ceremony: he must cross-examine me. “You wrote the adaptation, therefore you own permission”—my claim collapses under its own gears. Agnolo separates authorship, influence, and authorization; Borges inventories what the archive actually proves. We keep the joke, remove the fictional clearance, and end with a finite rights question."
+    },
+    {
+      "id": "M-leonardo-3-2",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-f40ad976",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "object",
+      "text": "I place three labeled objects on the table: a manuscript, a compass, and a locked case. Douglas may claim the first as authorship, the second as influence, but not open the case without actual authorization. Each character handles one object and says what it can and cannot prove. The lock clicks; no one pretends that sound is a license."
+    },
+    {
+      "id": "M-leonardo-3-3",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "Douglas enters with a confident legal brief. I ask one question: “Who authorized this?” Then I let the room go silent. No invented consent, no magical answer from the future. Borges catalogs the missing volume; Agnolo writes the cost of pausing. The silence becomes the scene’s honest result: creative desire survives, but production waits."
+    },
+    {
+      "id": "M-leonardo-3-4",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-51ca299b",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "callback",
+      "text": "I callback to the radio’s first promise: the future answered, but it never signed for anyone. Douglas interrupts the rehearsal and hears his appointment announced as if it were authority. He dismantles that assumption, gently and absurdly. We finish by labeling three signals—idea, influence, permission—then choose an original adaptation that needs no borrowed clearance."
+    }
+  ]
+}

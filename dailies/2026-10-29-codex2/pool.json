@@ -1,0 +1,166 @@
+{
+  "run": "2026-10-29-codex2",
+  "ideas": [
+    {
+      "id": "P-b0e1b24c",
+      "text": "silence on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-borges-1-3",
+        "M-borges-2-3",
+        "M-borges-3-3",
+        "M-leonardo-1-3",
+        "M-leonardo-2-3",
+        "M-leonardo-3-3",
+        "M-agnolo-1-3",
+        "M-agnolo-2-3",
+        "M-agnolo-3-3",
+        "M-douglas-adams-1-3",
+        "M-douglas-adams-2-3"
+      ],
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    },
+    {
+      "id": "P-f1019f83",
+      "text": "escalation on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "escalation",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-borges-2-2",
+        "M-borges-3-2",
+        "M-leonardo-1-2",
+        "M-agnolo-1-2",
+        "M-agnolo-3-2",
+        "M-douglas-adams-3-2"
+      ],
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    },
+    {
+      "id": "P-f40ad976",
+      "text": "object on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "object",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-borges-1-2",
+        "M-borges-2-4",
+        "M-borges-3-4",
+        "M-leonardo-1-4",
+        "M-leonardo-2-2",
+        "M-leonardo-3-2",
+        "M-agnolo-1-4",
+        "M-agnolo-2-2",
+        "M-agnolo-3-4",
+        "M-douglas-adams-1-2",
+        "M-douglas-adams-2-2",
+        "M-douglas-adams-3-3"
+      ],
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    },
+    {
+      "id": "P-fd70a869",
+      "text": "reversal on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-borges-1-1",
+        "M-borges-2-1",
+        "M-borges-3-1",
+        "M-leonardo-1-1",
+        "M-leonardo-2-1",
+        "M-leonardo-3-1",
+        "M-agnolo-1-1",
+        "M-agnolo-2-1",
+        "M-agnolo-3-1",
+        "M-douglas-adams-1-1",
+        "M-douglas-adams-2-1",
+        "M-douglas-adams-3-1"
+      ],
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    },
+    {
+      "id": "P-51ca299b",
+      "text": "callback on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "callback",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-leonardo-2-4",
+        "M-leonardo-3-4",
+        "M-agnolo-2-4",
+        "M-douglas-adams-1-4",
+        "M-douglas-adams-2-4"
+      ],
+      "characters": [
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    },
+    {
+      "id": "P-e631ceeb",
+      "text": "confession on \"Douglas arrives as legal counsel\"",
+      "title": "Douglas arrives as legal counsel",
+      "lens": "confession",
+      "input_ids": [
+        "N-7a51a1ae"
+      ],
+      "origins": [
+        "M-borges-1-4",
+        "M-douglas-adams-3-4"
+      ],
+      "characters": [
+        "borges",
+        "douglas-adams"
+      ],
+      "carried": false,
+      "category": "converged"
+    }
+  ],
+  "dropped_over_cap": [],
+  "dropped_rejected": []
+}

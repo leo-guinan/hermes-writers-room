@@ -1,0 +1,8 @@
+# Douglas-adams · rehearsal take 1
+
+_Simulating the others from compression._
+
+- **M-douglas-adams-1-1** → P-fd70a869 (reversal): I enter as legal counsel and immediately ask whether anyone has appointed Agnolo counsel against me. Leonardo says my authorship settles the matter. I reverse the argument: if authorship were a universal permission slip, every library would be a court and every court would be terribly overbooked. Agnolo requests the actual authorization. I discover I have brought only confidence.
+- **M-douglas-adams-1-2** → P-f40ad976 (object): I place three objects on the table: a manuscript, a receipt, and a blank permission form. The manuscript proves I made something once. The receipt proves somebody paid for something, not necessarily this. The blank form is the only object capable of granting anything, and it grants nothing until the right person signs it. A dreadful triumph for stationery.
+- **M-douglas-adams-1-3** → P-b0e1b24c (silence): Agnolo asks, very quietly, what I am authorized to approve. I prepare a magnificent answer, then notice that every sentence contains the word “perhaps.” Borges records the silence as evidence of uncertainty. Leonardo sketches around it. I let the silence remain: influence may fill a room, but it cannot sign a rights document.
+- **M-douglas-adams-1-4** → P-51ca299b (callback): I return to my ceremonial title: “I'm here as legal counsel.” This time Agnolo asks me to counsel the room legally. I advise them to distinguish the historical fact that I wrote something from the present fact that permission is undocumented. Then I add, “Apparently that isn't sufficient,” and find, to my irritation, that the joke has become the clearest statement.

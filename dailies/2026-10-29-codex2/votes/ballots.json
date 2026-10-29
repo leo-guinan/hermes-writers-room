@@ -1,0 +1,191 @@
+{
+  "advisory": true,
+  "blind": true,
+  "self_vote": false,
+  "converged_rankable": true,
+  "ballots": [
+    {
+      "voter": "borges",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-fd70a869",
+          "B": "P-f1019f83",
+          "C": "P-e631ceeb",
+          "D": "P-51ca299b",
+          "E": "P-f40ad976",
+          "F": "P-b0e1b24c"
+        },
+        "takes": {
+          "A": "T-agnolo-1",
+          "B": "T-douglas-adams-3",
+          "C": "T-douglas-adams-2",
+          "D": "T-final",
+          "E": "T-douglas-adams-1",
+          "F": "T-leonardo-3",
+          "G": "T-agnolo-2",
+          "H": "T-agnolo-3",
+          "I": "T-leonardo-1",
+          "J": "T-leonardo-2"
+        }
+      },
+      "ideas": [
+        "P-fd70a869",
+        "P-f40ad976",
+        "P-e631ceeb",
+        "P-f1019f83",
+        "P-51ca299b",
+        "P-b0e1b24c"
+      ],
+      "takes": [
+        "T-leonardo-3",
+        "T-final",
+        "T-agnolo-3",
+        "T-agnolo-2",
+        "T-leonardo-2",
+        "T-leonardo-1",
+        "T-douglas-adams-1",
+        "T-agnolo-1",
+        "T-douglas-adams-3",
+        "T-douglas-adams-2"
+      ],
+      "ranked_own_origin": [
+        "P-fd70a869",
+        "P-f40ad976",
+        "P-e631ceeb",
+        "P-f1019f83",
+        "P-b0e1b24c"
+      ]
+    },
+    {
+      "voter": "leonardo",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-b0e1b24c",
+          "B": "P-f40ad976",
+          "C": "P-e631ceeb",
+          "D": "P-f1019f83",
+          "E": "P-fd70a869",
+          "F": "P-51ca299b"
+        },
+        "takes": {
+          "A": "T-final",
+          "B": "T-douglas-adams-2",
+          "C": "T-borges-2",
+          "D": "T-douglas-adams-1",
+          "E": "T-agnolo-1",
+          "F": "T-douglas-adams-3",
+          "G": "T-borges-1",
+          "H": "T-agnolo-3",
+          "I": "T-borges-3",
+          "J": "T-agnolo-2"
+        }
+      },
+      "invalid": true
+    },
+    {
+      "voter": "agnolo",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-fd70a869",
+          "B": "P-e631ceeb",
+          "C": "P-f1019f83",
+          "D": "P-51ca299b",
+          "E": "P-b0e1b24c",
+          "F": "P-f40ad976"
+        },
+        "takes": {
+          "A": "T-borges-2",
+          "B": "T-douglas-adams-3",
+          "C": "T-leonardo-3",
+          "D": "T-borges-1",
+          "E": "T-borges-3",
+          "F": "T-douglas-adams-1",
+          "G": "T-leonardo-2",
+          "H": "T-final",
+          "I": "T-douglas-adams-2",
+          "J": "T-leonardo-1"
+        }
+      },
+      "ideas": [
+        "P-f40ad976",
+        "P-fd70a869",
+        "P-f1019f83",
+        "P-51ca299b",
+        "P-e631ceeb",
+        "P-b0e1b24c"
+      ],
+      "takes": [
+        "T-leonardo-3",
+        "T-leonardo-2",
+        "T-leonardo-1",
+        "T-borges-1",
+        "T-douglas-adams-1",
+        "T-borges-3",
+        "T-borges-2",
+        "T-douglas-adams-2",
+        "T-douglas-adams-3",
+        "T-final"
+      ],
+      "ranked_own_origin": [
+        "P-f40ad976",
+        "P-fd70a869",
+        "P-f1019f83",
+        "P-51ca299b",
+        "P-b0e1b24c"
+      ]
+    },
+    {
+      "voter": "douglas-adams",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-b0e1b24c",
+          "B": "P-51ca299b",
+          "C": "P-f40ad976",
+          "D": "P-fd70a869",
+          "E": "P-e631ceeb",
+          "F": "P-f1019f83"
+        },
+        "takes": {
+          "A": "T-agnolo-3",
+          "B": "T-agnolo-2",
+          "C": "T-borges-3",
+          "D": "T-agnolo-1",
+          "E": "T-leonardo-2",
+          "F": "T-leonardo-1",
+          "G": "T-leonardo-3",
+          "H": "T-borges-1",
+          "I": "T-final",
+          "J": "T-borges-2"
+        }
+      },
+      "ideas": [
+        "P-f1019f83",
+        "P-fd70a869",
+        "P-e631ceeb",
+        "P-f40ad976",
+        "P-51ca299b",
+        "P-b0e1b24c"
+      ],
+      "takes": [
+        "T-leonardo-1",
+        "T-leonardo-3",
+        "T-leonardo-2",
+        "T-agnolo-1",
+        "T-agnolo-2",
+        "T-borges-1",
+        "T-agnolo-3",
+        "T-borges-3",
+        "T-final",
+        "T-borges-2"
+      ],
+      "ranked_own_origin": [
+        "P-f1019f83",
+        "P-fd70a869",
+        "P-e631ceeb",
+        "P-f40ad976",
+        "P-51ca299b",
+        "P-b0e1b24c"
+      ]
+    }
+  ]
+}

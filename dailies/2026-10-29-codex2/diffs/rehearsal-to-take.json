@@ -1,0 +1,114 @@
+[
+  {
+    "id": "P-b0e1b24c",
+    "origins": [
+      "M-borges-1-3",
+      "M-borges-2-3",
+      "M-borges-3-3",
+      "M-leonardo-1-3",
+      "M-leonardo-2-3",
+      "M-leonardo-3-3",
+      "M-agnolo-1-3",
+      "M-agnolo-2-3",
+      "M-agnolo-3-3",
+      "M-douglas-adams-1-3",
+      "M-douglas-adams-2-3"
+    ],
+    "used_in_turns": []
+  },
+  {
+    "id": "P-f1019f83",
+    "origins": [
+      "M-borges-2-2",
+      "M-borges-3-2",
+      "M-leonardo-1-2",
+      "M-agnolo-1-2",
+      "M-agnolo-3-2",
+      "M-douglas-adams-3-2"
+    ],
+    "used_in_turns": [
+      1,
+      4,
+      7,
+      10,
+      13
+    ]
+  },
+  {
+    "id": "P-f40ad976",
+    "origins": [
+      "M-borges-1-2",
+      "M-borges-2-4",
+      "M-borges-3-4",
+      "M-leonardo-1-4",
+      "M-leonardo-2-2",
+      "M-leonardo-3-2",
+      "M-agnolo-1-4",
+      "M-agnolo-2-2",
+      "M-agnolo-3-4",
+      "M-douglas-adams-1-2",
+      "M-douglas-adams-2-2",
+      "M-douglas-adams-3-3"
+    ],
+    "used_in_turns": [
+      2,
+      5,
+      8,
+      11,
+      14
+    ]
+  },
+  {
+    "id": "P-fd70a869",
+    "origins": [
+      "M-borges-1-1",
+      "M-borges-2-1",
+      "M-borges-3-1",
+      "M-leonardo-1-1",
+      "M-leonardo-2-1",
+      "M-leonardo-3-1",
+      "M-agnolo-1-1",
+      "M-agnolo-2-1",
+      "M-agnolo-3-1",
+      "M-douglas-adams-1-1",
+      "M-douglas-adams-2-1",
+      "M-douglas-adams-3-1"
+    ],
+    "used_in_turns": [
+      2,
+      5,
+      8,
+      11,
+      14
+    ]
+  },
+  {
+    "id": "P-51ca299b",
+    "origins": [
+      "M-leonardo-2-4",
+      "M-leonardo-3-4",
+      "M-agnolo-2-4",
+      "M-douglas-adams-1-4",
+      "M-douglas-adams-2-4"
+    ],
+    "used_in_turns": [
+      3,
+      6,
+      9,
+      12
+    ]
+  },
+  {
+    "id": "P-e631ceeb",
+    "origins": [
+      "M-borges-1-4",
+      "M-douglas-adams-3-4"
+    ],
+    "used_in_turns": [
+      3,
+      6,
+      9,
+      12
+    ]
+  }
+]

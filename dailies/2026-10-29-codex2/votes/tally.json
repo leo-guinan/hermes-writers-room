@@ -1,0 +1,145 @@
+{
+  "advisory": true,
+  "method": "borda",
+  "tiebreak": "producer",
+  "ballots_counted": 3,
+  "ballots_invalid": 1,
+  "ideas": [
+    {
+      "id": "P-fd70a869",
+      "points": 13,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-f40ad976",
+      "points": 11,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-f1019f83",
+      "points": 10,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-e631ceeb",
+      "points": 7,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-51ca299b",
+      "points": 4,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-b0e1b24c",
+      "points": 0,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    }
+  ],
+  "takes": [
+    {
+      "id": "T-leonardo-3",
+      "points": 26,
+      "tie": false
+    },
+    {
+      "id": "T-leonardo-1",
+      "points": 20,
+      "tie": true
+    },
+    {
+      "id": "T-leonardo-2",
+      "points": 20,
+      "tie": true
+    },
+    {
+      "id": "T-agnolo-2",
+      "points": 11,
+      "tie": false
+    },
+    {
+      "id": "T-agnolo-3",
+      "points": 10,
+      "tie": true
+    },
+    {
+      "id": "T-borges-1",
+      "points": 10,
+      "tie": true
+    },
+    {
+      "id": "T-final",
+      "points": 9,
+      "tie": false
+    },
+    {
+      "id": "T-agnolo-1",
+      "points": 8,
+      "tie": true
+    },
+    {
+      "id": "T-douglas-adams-1",
+      "points": 8,
+      "tie": true
+    },
+    {
+      "id": "T-borges-3",
+      "points": 6,
+      "tie": false
+    },
+    {
+      "id": "T-borges-2",
+      "points": 3,
+      "tie": false
+    },
+    {
+      "id": "T-douglas-adams-2",
+      "points": 2,
+      "tie": true
+    },
+    {
+      "id": "T-douglas-adams-3",
+      "points": 2,
+      "tie": true
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "P-f1019f83",
+    "positions": {
+      "borges": 0.6,
+      "agnolo": 0.4,
+      "douglas-adams": 0
+    },
+    "spread": 0.6
+  },
+  {
+    "id": "P-f40ad976",
+    "positions": {
+      "borges": 0.2,
+      "agnolo": 0,
+      "douglas-adams": 0.6
+    },
+    "spread": 0.6
+  },
+  {
+    "id": "P-e631ceeb",
+    "positions": {
+      "borges": 0.4,
+      "agnolo": 0.8,
+      "douglas-adams": 0.4
+    },
+    "spread": 0.4
+  },
+  {
+    "id": "P-51ca299b",
+    "positions": {
+      "borges": 0.8,
+      "agnolo": 0.6,
+      "douglas-adams": 0.8
+    },
+    "spread": 0.20000000000000007
+  },
+  {
+    "id": "P-fd70a869",
+    "positions": {
+      "borges": 0,
+      "agnolo": 0.2,
+      "douglas-adams": 0.2
+    },
+    "spread": 0.2
+  },
+  {
+    "id": "P-b0e1b24c",
+    "positions": {
+      "borges": 1,
+      "agnolo": 1,
+      "douglas-adams": 1
+    },
+    "spread": 0
+  }
+]

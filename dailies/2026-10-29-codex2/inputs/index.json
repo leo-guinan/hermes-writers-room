@@ -1,0 +1,17 @@
+[
+  {
+    "id": "N-7a51a1ae",
+    "path": "inputs/2026-10-29/douglas-arrives-as-legal-counsel.md",
+    "sha256": "7a51a1aec1b22100358dc61f2d52bef1eadae25a2e46de6257373a9ff03bc870",
+    "kind": "idea",
+    "title": "Douglas arrives as legal counsel",
+    "credit": true,
+    "credit_name": "Leo",
+    "reuse": "show-only",
+    "provenance": {
+      "via": "direct",
+      "submitted_by": "leo-guinan"
+    },
+    "refs": []
+  }
+]
