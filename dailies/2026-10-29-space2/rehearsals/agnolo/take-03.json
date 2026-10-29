@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-3",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-3-1",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-d54450f2",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "interruption",
+      "text": "I stop the rehearsal at Douglas’s entrance and ask for two separate cards: “creative source” and “authorization.” He may argue brilliantly for the first; the second remains blank until documented rights review. Leonardo can pitch the adaptation, Borges can cite the record, and nobody mistakes a fictional appointment for permission."
+    },
+    {
+      "id": "M-agnolo-3-2",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I place the blocked Space receipt on the press table as the only prop. Its access_blocked state, one failed read, zero bytes, unknown cost, and unknown reuse permission interrupt every confident claim. We rehearse an announcement that names the gap instead of inventing audio, transcript, speakers, or clearance."
+    },
+    {
+      "id": "M-agnolo-3-3",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I let Douglas demand proof from us, then reverse the examination: authorship may explain influence, but cannot establish present authorization. Leonardo must offer a concrete adaptation without protected quotation; Borges must preserve uncertainty; I record each claim under source, influence, or rights, with no category silently promoting another."
+    },
+    {
+      "id": "M-agnolo-3-4",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-08b95d25",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "callback",
+      "text": "At the end, Douglas calls himself counsel and the room echoes the word “counsel” whenever anyone overstates the evidence. Each echo triggers the receipt: authorized read failed, request ID absent, cost unknown. The final rehearsal line is dry and usable: compelling material is not the same thing as cleared material."
+    }
+  ]
+}

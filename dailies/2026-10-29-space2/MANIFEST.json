@@ -1,0 +1,284 @@
+{
+  "schema": "dailies/1",
+  "run": "2026-10-29-space2",
+  "date": "2026-10-29",
+  "complete": true,
+  "window": {
+    "from": null,
+    "from_tag": null,
+    "cutoff_sha": "21111b6ba79163026cc4630b8de0b9005ccd34f5",
+    "inputs_hash": "8c989f44d511adc654aae1601f2eae269b8de3e48f06c121413825df743fac3c",
+    "input_count": 2,
+    "skipped_inputs": []
+  },
+  "config_sha256": "d9bd72745ed38f08095cfc24767c8d74b62445d8755e2e3f8dcaf4450888cd5d",
+  "characters": [
+    "borges",
+    "leonardo",
+    "agnolo",
+    "douglas-adams"
+  ],
+  "llm": {
+    "mode": "hermes",
+    "calls": 42,
+    "max_calls": 60,
+    "failures": [],
+    "tool_uses": {},
+    "model": "gpt-5.6-luna",
+    "provider": "openai-codex",
+    "toolsets": [
+      "todo"
+    ]
+  },
+  "seeds": {
+    "show_bible": "9d75549246baf3a8060b9437742bd9614fa286bf263d8aa25b858808a1f66676",
+    "borges": {
+      "persona_sha256": "95c80e78e9ce5cceb7641d526f90e6a62213c8edf8693f82f9cdf4cd4c78db40",
+      "canon_sha256": "2a67c9df8be3f6f22ea6553d0806945eafcb17072bd53f8cd1464dec40698c1c"
+    },
+    "leonardo": {
+      "persona_sha256": "2c0f7d0572c13c0c6a362e8f1f4e5419730cda4f8b59775cfb24c73536904e97",
+      "canon_sha256": "14814780ad5bbc166555ec1a2c63730dcf07e4463596c8e586e710ebb75350b9"
+    },
+    "agnolo": {
+      "persona_sha256": "2649c5d569a29ef3e1a6c0acbf82c11e88f6ee21d7de84f73462c99450ef5de5",
+      "canon_sha256": "4cfc958f7e3a10082b6d21385a68c64372379efb65339f5e4668e26e8b85cadf"
+    },
+    "douglas-adams": {
+      "persona_sha256": "6d6295f0a08ff87f9d831abde72aaf4612f383de7977ebf44a9627e70d3f86aa",
+      "canon_sha256": "4ccc69a47270b19023de11deac88445c459ff3d1770c9326f78fc852f990f27c"
+    }
+  },
+  "prompt_limits": {
+    "max_inputs": 30,
+    "max_body_chars": 2000,
+    "inputs_omitted": 0,
+    "bodies_truncated": 0
+  },
+  "cost": {
+    "status": "unknown",
+    "usd": null,
+    "note": "Hermes stream-json reports no cost; the binding limit is the call cap."
+  },
+  "counts": {
+    "rehearsal_takes": 12,
+    "moves": 48,
+    "pool_ideas": 11,
+    "turns": 14,
+    "problems": 2
+  },
+  "files": [
+    {
+      "path": "dailies/2026-10-29-space2/compression/agnolo__of__borges.md",
+      "sha256": "a67752188105591131eb379b42bcf81588c6c2f415d3a480b1aedd9ccf09d3fb"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/agnolo__of__douglas-adams.md",
+      "sha256": "45f347ca8c1dded586714fc39557adab6bd3bd04ef41ad2c8aa600ba25a249e4"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/agnolo__of__leonardo.md",
+      "sha256": "2322bf896f7e3ac8edfe532d0f67af5316b089e06662b38deb221638ac21e897"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/borges__of__agnolo.md",
+      "sha256": "b064a4597f10b003007cf6202836efa84299af73219db0ee4f0270b549fd83f1"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/borges__of__douglas-adams.md",
+      "sha256": "0999d646988a592e988dce7191262243267c071e339435da0c70f417faa33ffd"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/borges__of__leonardo.md",
+      "sha256": "1aa382aa6c213a0cc6fc5c7820551c1a1430518357e82ced9599c3cc837218c2"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/douglas-adams__of__agnolo.md",
+      "sha256": "8126d5e4c15bf6e13d8a453028e13160f9d80b867e88b75c2d8c81340d8c789f"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/douglas-adams__of__borges.md",
+      "sha256": "34e7d40c73dc549d625a9e5d42766a0d7382e26fedf6793c5a1cff6d4f20ff98"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/douglas-adams__of__leonardo.md",
+      "sha256": "117e999fb2e78b86df06cd59d9b5576ed063a6089d06c3d52c28076e598f0f1c"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/leonardo__of__agnolo.md",
+      "sha256": "bf2f59eac1382e4bf5aa5ecd9af3817d398f1cc831e7c3e1e7a9a93fa60a993d"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/leonardo__of__borges.md",
+      "sha256": "fead4a6feafcc03bec77eef59e5814a8aed76100a4f2ad2ecc3c9801d3a49ed2"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/compression/leonardo__of__douglas-adams.md",
+      "sha256": "160a928b1858b03e3b90fe6581a856ce5f06ba1c92f52bc78d06cc0d5b7ff78b"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/category-performance.json",
+      "sha256": "982b7a2b0b6ba17cbac40e9a38c9cf44cdf16774b1b20ae43d106d823fff418c"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/compression-error.json",
+      "sha256": "1dc498667e5322fabcfd3e82dc5a69e1c3bb8dbe848b725ade3192a36c7c625a"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/convergence.json",
+      "sha256": "4554ed9eb9abdfacb1bbfb28aee887cb279ac7bcca3de8f45734ea587b7c0d61"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/quality.json",
+      "sha256": "617f1fa0b527c2468da74db2dfbf3c0544e9508315fbe4608e4b4daab8a5b0e7"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/rehearsal-to-take.json",
+      "sha256": "55e9e800f1009c818dd2360a82c317995e57b3bee266c16721738e0586edd3d4"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/voice-drift.json",
+      "sha256": "8e216f23742f675e8a4270f685653518010a6fe0a84620905e8b103a146a2f2e"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/vote-splits.json",
+      "sha256": "5ab2c5d2360fae1b785daf8d1e03022e5ca39a2bbf6fa1b87634e3f260b874d3"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/diffs/vs-previous.json",
+      "sha256": "9520a10ac5dac57ae90734687870a23d0c6e63ecd11c27e94a783e85e3d51a9a"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/INDEX.md",
+      "sha256": "fdcc9f666efda9e56602d1e76de290248d2045fbbc58fac6660222b48bf8f06f"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/inputs/index.json",
+      "sha256": "1f56254a6c3040f341f4594c7ab85b1cbe4ae11ec35b03dca83529514164118b"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/inputs/N-1720dabc.md",
+      "sha256": "c5d5f62518ca1b91496fd5731547f3f8c170a75c1554c947ad3b941fd7f53a36"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/inputs/N-7a51a1ae.md",
+      "sha256": "31f5a898323734f228e6310f1d5dedb2e5e765b8cd67a753b0b056ebe6b3c2af"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/pool.json",
+      "sha256": "8800397d5e37fff69b50818a128e16106839e13673acf4ed02235ee10c0422bd"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-01.json",
+      "sha256": "f805b7e98c90e384eccb8c182507119c6c172cc54c137b652ffec19727e9d2e4"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-01.md",
+      "sha256": "424e9c7e8b6f916db94fef40a067aeb85487e692e5748887a130ca390f64f6c5"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-02.json",
+      "sha256": "d83eb9ec57ed301edaad76dd136d74672229ab76de38b43856ce29b16c3e6459"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-02.md",
+      "sha256": "3f4923a0cb29c65e4dd8174f9f7dab088e9b416af149464ae9a7802bdf4e284e"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-03.json",
+      "sha256": "47582a7b85697479abf816ccfd6f907862a4a1584c77b7ed89dfc8b85afed983"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/agnolo/take-03.md",
+      "sha256": "e54d62c0949ae4449371666f5a3b9395adfba394a51ecc766aa0c04b5981d6e0"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-01.json",
+      "sha256": "39cb0f26abd6de919c1939a05312c28b4e46526136314e6637564e1834f084a2"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-01.md",
+      "sha256": "3fda7c2fc4087c20f98afa7745c2be996387af3cf7f8686c042ed141130e0cae"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-02.json",
+      "sha256": "3ddca502bd5a6d08992141b81184714d0db5d9eae3d8204b55b3b84e2caa9e2f"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-02.md",
+      "sha256": "a76826b918e5a037a6c33f9772d37e8b8524cf40cbbf0f27cc4ed8d98f41ee27"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-03.json",
+      "sha256": "d96ca0615470f2c6243d85a21daf700f83c733c3a2336213e6a03cceb2f67e4b"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/borges/take-03.md",
+      "sha256": "c9cb6a4f0182542ff54bd5d4146ca4fdf8d72950cba157f92bebdc02a5214b43"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-01.json",
+      "sha256": "ee28a21f6071b6efb49bd40dcb24653fa9a8c952092f8117131130d2fd918a85"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-01.md",
+      "sha256": "91f1e35a91024bf27aa109e82dc8cab6963d0cfda42f7b9524d8e684b469a8f1"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-02.json",
+      "sha256": "8b3e607fd5d63c317fffed38606c89a81b17a930ec0845adc8c052d4922f3d98"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-02.md",
+      "sha256": "b7f61bd0f06c92d54c334e60abaecfeb7a1e316e25fed766a4db22432c61e2ac"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-03.json",
+      "sha256": "f1fce42d4cb65a31c87f72ab4c6cf14a9f213b856af5479a2ae641f8865c361f"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/douglas-adams/take-03.md",
+      "sha256": "ed2e7a972e416cabb984158021eb50dde3c261e299455dce03aa66fd8326382d"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-01.json",
+      "sha256": "2b6932762006039e6e8b92d242fec5db1dcc11276405ab7b5ed0fd093bed392b"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-01.md",
+      "sha256": "802bb65311fce83eb02975a27a89165a834731379805194064489f107e72336b"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-02.json",
+      "sha256": "b025593c13eb9392cc8247fb4d7b6461b9eb47e99c276b471d7d626193145873"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-02.md",
+      "sha256": "141450f9cc9bec063dcd7ea1bfd905f5751b4769eece64b229bd526be308763f"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-03.json",
+      "sha256": "13a699209dd902d4b67b0a2ac1e068721c50bf33b23eacb564d743dbbb52ed7e"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/rehearsals/leonardo/take-03.md",
+      "sha256": "b85309d64740f744e40972724671dc7cdbbef74aaec91fc892bb20e605e9bc40"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/take/transcript.md",
+      "sha256": "e797d7d7f9d45d54bc781967dd1a161e532fdf3dc565a59e9be198090c648072"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/take/turns.jsonl",
+      "sha256": "d2b444b098eb7c3a57e4ad889ab5707f64f9a9f9bf7956ded2e3e4a202ed4408"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/votes/ballots.json",
+      "sha256": "b59c486f200ee9d04d9912a19ac7e9d49500d4c19c5ac907b019b81ceec1c705"
+    },
+    {
+      "path": "dailies/2026-10-29-space2/votes/tally.json",
+      "sha256": "820a464657cf4ae8ba1eae01cbc51748f8333235714627c9c7cb93e325911104"
+    }
+  ]
+}

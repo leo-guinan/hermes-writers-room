@@ -1,0 +1,8 @@
+# Borges · rehearsal take 2
+
+_Simulating the others from compression._
+
+- **M-borges-2-1** → P-fd70a869 (reversal): I would let Douglas ask Leonardo for authorization, then reverse the room’s assumptions: authorship explains provenance, not present permission. Agnolo would mark every claim by evidence, while I name this Douglas a fictional counsel, not the historical man. The rehearsal may proceed only as an unlicensed test of distinctions, not as clearance.
+- **M-borges-2-2** → P-f074be1b (object): I would place the receipt on the table as the scene’s central prop: access_blocked, one read attempt, zero bytes, unknown cost, no request ID. No one may describe the Space from imagination. Douglas can object brilliantly; the object answers plainly: an inaccessible record is not permission, proof, or usable source material.
+- **M-borges-2-3** → P-f1019f83 (escalation): I would escalate each shortcut into a comic interruption. Leonardo calls presence approval; Agnolo calls it unsupported. Douglas calls both statements dangerously tidy. The press conference collapses into three columns—written by, influenced by, authorized for use—until the only approved output is an original rehearsal exchange with no protected text reproduced.
+- **M-borges-2-4** → P-dd3ef4ff (silence): I would try silence: after the receipt is read, Borges asks what the room knows, and nobody fills the gap. The pause separates evidence from desire. Then Douglas says his fictional consent changes nothing about rights. We end with the cheapest next test—repair the authorized read profile—not with a manufactured announcement.

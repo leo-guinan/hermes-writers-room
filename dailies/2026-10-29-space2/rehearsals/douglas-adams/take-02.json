@@ -1,0 +1,46 @@
+{
+  "take": "T-douglas-adams-2",
+  "character": "douglas-adams",
+  "moves": [
+    {
+      "id": "M-douglas-adams-2-1",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-2",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I shall reverse the introduction: as author, I am summoned to authorize the adaptation; as legal counsel, I must first ask whether I possess the rights to authorize it. The room may now enjoy the spectacle of a man being both the evidence and the warning label."
+    },
+    {
+      "id": "M-douglas-adams-2-2",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-2",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I place the receipt on the lectern like a small, disappointed planet. It records an access block, one failed authorized read, and zero bytes—not permission, not audio, not a transcript. Anyone calling it clearance will be asked to cross-examine the JSON."
+    },
+    {
+      "id": "M-douglas-adams-2-3",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-2",
+      "pool_id": "P-f1019f83",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "escalation",
+      "text": "Leonardo offers my creative influence as proof. Agnolo asks for authorization. Borges asks what, precisely, happened. I escalate by granting the room my blessing to explore three sketches, while withholding the one thing nobody may improvise: rights."
+    },
+    {
+      "id": "M-douglas-adams-2-4",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-2",
+      "pool_id": "P-dd3ef4ff",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "silence",
+      "text": "I stop speaking whenever someone says “we have the Space.” The silence lasts until somebody distinguishes its identifier, recording, transcript, speakers, cost, and reuse permission. Then I say: excellent rehearsal; now repair the authorized read profile before the fiction acquires a legal hat."
+    }
+  ]
+}

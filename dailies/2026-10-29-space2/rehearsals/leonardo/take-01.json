@@ -1,0 +1,46 @@
+{
+  "take": "T-leonardo-1",
+  "character": "leonardo",
+  "moves": [
+    {
+      "id": "M-leonardo-1-1",
+      "character": "leonardo",
+      "take": "T-leonardo-1",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I welcome Douglas as counsel, then reverse the premise: his authorship can explain influence, not authorize reuse. I ask him to present a license, discover he cannot, and let the room separate admiration, historical attribution, estate permission, and professional legal review without pretending the joke cleared anything."
+    },
+    {
+      "id": "M-leonardo-1-2",
+      "character": "leonardo",
+      "take": "T-leonardo-1",
+      "pool_id": "P-f1019f83",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "escalation",
+      "text": "I let each request become more absurd: first creative advice, then proof of authority, then compensation terms, then a signed clearance. Douglas’s appointment collapses under its own paperwork while the scene keeps the central distinction intact: an imagined presence may sharpen judgment but cannot grant rights."
+    },
+    {
+      "id": "M-leonardo-1-3",
+      "character": "leonardo",
+      "take": "T-leonardo-1",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I put the receipt.json on the rehearsal table as the scene’s stubborn prop. Borges reads only access_blocked; Agnolo counts one failed read, zero bytes, unknown cost, and no request ID. I refuse to describe the Space, then name repairing the authorized profile as the cheapest next test."
+    },
+    {
+      "id": "M-leonardo-1-4",
+      "character": "leonardo",
+      "take": "T-leonardo-1",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "I have Leonardo ask Douglas, “Can you authorize this?” Then I leave the silence unfilled. No historical prestige, fictional consent, or clever explanation becomes clearance. After the pause, I say we can continue rehearsing the idea, but publication waits for documented permission and professional review."
+    }
+  ]
+}

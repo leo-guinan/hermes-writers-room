@@ -1,0 +1,153 @@
+[
+  {
+    "id": "P-f074be1b",
+    "origins": [
+      "M-borges-1-3",
+      "M-borges-2-2",
+      "M-borges-3-3",
+      "M-leonardo-1-3",
+      "M-leonardo-2-4",
+      "M-leonardo-3-2",
+      "M-agnolo-1-2",
+      "M-agnolo-2-3",
+      "M-agnolo-3-2",
+      "M-douglas-adams-1-2",
+      "M-douglas-adams-2-2",
+      "M-douglas-adams-3-2"
+    ],
+    "used_in_turns": [
+      1,
+      6,
+      12
+    ]
+  },
+  {
+    "id": "P-f1019f83",
+    "origins": [
+      "M-borges-2-3",
+      "M-borges-3-2",
+      "M-leonardo-1-2",
+      "M-leonardo-3-3",
+      "M-agnolo-1-3",
+      "M-agnolo-2-2",
+      "M-douglas-adams-1-3",
+      "M-douglas-adams-2-3",
+      "M-douglas-adams-3-3"
+    ],
+    "used_in_turns": [
+      1,
+      7,
+      12
+    ]
+  },
+  {
+    "id": "P-fd70a869",
+    "origins": [
+      "M-borges-1-2",
+      "M-borges-2-1",
+      "M-borges-3-1",
+      "M-leonardo-1-1",
+      "M-leonardo-2-1",
+      "M-leonardo-3-1",
+      "M-agnolo-1-1",
+      "M-agnolo-2-1",
+      "M-agnolo-3-3",
+      "M-douglas-adams-1-1",
+      "M-douglas-adams-2-1",
+      "M-douglas-adams-3-1"
+    ],
+    "used_in_turns": [
+      2,
+      7,
+      13
+    ]
+  },
+  {
+    "id": "P-22f1dcc6",
+    "origins": [
+      "M-leonardo-3-4",
+      "M-douglas-adams-3-4"
+    ],
+    "used_in_turns": [
+      2,
+      8,
+      13
+    ]
+  },
+  {
+    "id": "P-b0e1b24c",
+    "origins": [
+      "M-leonardo-1-4",
+      "M-leonardo-2-3",
+      "M-agnolo-1-4",
+      "M-agnolo-2-4"
+    ],
+    "used_in_turns": [
+      8,
+      14
+    ]
+  },
+  {
+    "id": "P-d54450f2",
+    "origins": [
+      "M-borges-1-1",
+      "M-agnolo-3-1"
+    ],
+    "used_in_turns": [
+      3,
+      9,
+      14
+    ]
+  },
+  {
+    "id": "P-dd3ef4ff",
+    "origins": [
+      "M-borges-2-4",
+      "M-douglas-adams-1-4",
+      "M-douglas-adams-2-4"
+    ],
+    "used_in_turns": [
+      9
+    ]
+  },
+  {
+    "id": "P-08b95d25",
+    "origins": [
+      "M-agnolo-3-4"
+    ],
+    "used_in_turns": [
+      4,
+      10
+    ]
+  },
+  {
+    "id": "P-51ca299b",
+    "origins": [
+      "M-borges-3-4"
+    ],
+    "used_in_turns": [
+      5,
+      10
+    ]
+  },
+  {
+    "id": "P-abf10de6",
+    "origins": [
+      "M-leonardo-2-2"
+    ],
+    "used_in_turns": [
+      5,
+      11
+    ]
+  },
+  {
+    "id": "P-e631ceeb",
+    "origins": [
+      "M-borges-1-4"
+    ],
+    "used_in_turns": [
+      6,
+      11
+    ]
+  }
+]

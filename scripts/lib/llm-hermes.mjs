@@ -20,7 +20,7 @@ export function createHermesLlm({ config, runId, seeds, run = runHermes, env = {
       try {
         const r = await run({
           bin: h.bin, binArgs: h.binArgs, profile: profileName(character, runId), prompt: attempt && retryHint ? `${prompt}\n\n${retryHint}` : prompt,
-          toolsets: h.toolsets, allowedTools: h.allowedTools, model: h.model, provider: h.provider, maxTurns: h.maxTurns, timeoutMs: h.timeoutSeconds * 1000, env, secrets,
+          toolsets: h.toolsets, allowedTools: h.allowedTools, model: h.model, provider: h.provider, maxTurns: h.maxTurns, timeoutMs: h.timeoutSeconds * 1000, env, secrets, safeMode: h.safeMode === true,
         });
         for (const t of r.toolUses) toolUseCounts[t] = (toolUseCounts[t] ?? 0) + 1;
         return r.text;

@@ -76,9 +76,10 @@ export function exec({ bin = "hermes", binArgs = [], args, env = {}, timeoutMs =
 }
 
 /** One audited chat call. Returns { text, toolUses, events }. */
-export async function runHermes({ bin, binArgs, profile, prompt, toolsets = [], allowedTools = [], model, provider, maxTurns = 3, timeoutMs, env, secrets }) {
+export async function runHermes({ bin, binArgs, profile, prompt, toolsets = [], allowedTools = [], model, provider, maxTurns = 3, timeoutMs, env, secrets, safeMode = false }) {
   if (Buffer.byteLength(prompt) > MAX_PROMPT_BYTES) throw new HermesError(`prompt is ${Buffer.byteLength(prompt)} bytes; the limit is ${MAX_PROMPT_BYTES}`);
   const args = ["chat", "-p", profile, "-q", prompt, "--format", "stream-json", "--max-turns", String(maxTurns)];
+  if (safeMode) args.push("--safe-mode");
   if (toolsets.length) args.push("-t", toolsets.join(","));
   if (model) args.push("-m", model);
   if (provider) args.push("--provider", provider);

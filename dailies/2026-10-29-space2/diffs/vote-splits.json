@@ -1,0 +1,87 @@
+[
+  {
+    "id": "P-f1019f83",
+    "positions": {
+      "borges": 0.75,
+      "agnolo": 0
+    },
+    "spread": 0.75
+  },
+  {
+    "id": "P-f074be1b",
+    "positions": {
+      "borges": 0.125,
+      "agnolo": 0.6666666666666666
+    },
+    "spread": 0.5416666666666666
+  },
+  {
+    "id": "P-22f1dcc6",
+    "positions": {
+      "borges": 0.25,
+      "agnolo": 0.7777777777777778
+    },
+    "spread": 0.5277777777777778
+  },
+  {
+    "id": "P-dd3ef4ff",
+    "positions": {
+      "borges": 0.875,
+      "agnolo": 1
+    },
+    "spread": 0.125
+  },
+  {
+    "id": "P-b0e1b24c",
+    "positions": {
+      "borges": 1,
+      "agnolo": 0.8888888888888888
+    },
+    "spread": 0.11111111111111116
+  },
+  {
+    "id": "P-fd70a869",
+    "positions": {
+      "borges": 0,
+      "agnolo": 0.1111111111111111
+    },
+    "spread": 0.1111111111111111
+  },
+  {
+    "id": "P-abf10de6",
+    "positions": {
+      "borges": 0.625,
+      "agnolo": 0.5555555555555556
+    },
+    "spread": 0.06944444444444442
+  },
+  {
+    "id": "P-d54450f2",
+    "positions": {
+      "borges": 0.5,
+      "agnolo": 0.4444444444444444
+    },
+    "spread": 0.05555555555555558
+  },
+  {
+    "id": "P-08b95d25",
+    "positions": {
+      "borges": 0.375
+    },
+    "spread": 0
+  },
+  {
+    "id": "P-51ca299b",
+    "positions": {
+      "agnolo": 0.3333333333333333
+    },
+    "spread": 0
+  },
+  {
+    "id": "P-e631ceeb",
+    "positions": {
+      "agnolo": 0.2222222222222222
+    },
+    "spread": 0
+  }
+]

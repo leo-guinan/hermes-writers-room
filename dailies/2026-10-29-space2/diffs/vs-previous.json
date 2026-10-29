@@ -1,0 +1,24 @@
+{
+  "previous_run": "2026-10-29-codex2",
+  "new": [
+    "P-f074be1b",
+    "P-22f1dcc6",
+    "P-d54450f2",
+    "P-dd3ef4ff",
+    "P-08b95d25",
+    "P-abf10de6"
+  ],
+  "persisting": [
+    "P-f1019f83",
+    "P-fd70a869",
+    "P-b0e1b24c",
+    "P-51ca299b",
+    "P-e631ceeb"
+  ],
+  "dropped": [
+    "P-f40ad976"
+  ],
+  "carried_by_creative_pick": [],
+  "rejected_by_creatives": [],
+  "reactions": []
+}

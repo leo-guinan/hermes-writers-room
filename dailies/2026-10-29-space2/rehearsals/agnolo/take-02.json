@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-2",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-2-1",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I would let Douglas demand my authorization, then hand him the rehearsal ledger: authorship, influence, and permission are three separate empty chairs. He may occupy the first historically, influence the second imaginatively, but the third remains unfilled until a documented rights holder clears the proposed use."
+    },
+    {
+      "id": "M-agnolo-2-2",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-f1019f83",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "escalation",
+      "text": "I would make Leonardo pitch four increasingly lavish adaptations while I interrupt each with the same question: who authorized this? Douglas becomes both advocate and witness, forced to admit that creative excitement can forecast a work without granting anyone permission to make it."
+    },
+    {
+      "id": "M-agnolo-2-3",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I would place the Space receipt on the microphone as the scene’s only hard evidence: access_blocked, one read attempt, zero bytes, unknown cost, no request ID. Everyone must speak around that object without turning its missing audio or transcript into convenient dialogue."
+    },
+    {
+      "id": "M-agnolo-2-4",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "I would have Douglas announce that he cannot authorize anything, then leave a long silence. Leonardo wants to fill it with adaptation; I let the silence expose the difference between an author’s presence, a character’s claim, and actual legal clearance."
+    }
+  ]
+}

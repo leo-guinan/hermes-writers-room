@@ -64,7 +64,8 @@
     ],
     "maxTurns": 3,
     "timeoutSeconds": 180,
-    "maxCalls": 60
+    "maxCalls": 60,
+    "safeMode": true
   },
   "hermes_note": "toolsets/allowedTools: Hermes documents no tools-off mode, so characters get the near-inert `todo` toolset and any other tool_use aborts the run. This local test uses the OpenAI Codex OAuth integration; no API key is copied into the run environment. budgetUsd is not enforced in hermes mode (no cost in stream-json); maxCalls is."
 }

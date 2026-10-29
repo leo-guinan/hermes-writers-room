@@ -1,0 +1,10 @@
+{
+  "run": "2026-10-29-space",
+  "status": "aborted",
+  "complete": false,
+  "reason": "The OpenAI Codex-backed Hermes profile attempted tool calls outside the room allowlist before the safe-mode flag was added.",
+  "forbidden_tools": ["todo_list", "tool_search"],
+  "manifest_written": false,
+  "recovery": "Added hermes.safeMode=true to the test configuration and passed --safe-mode through the runner; the replacement run is 2026-10-29-space2.",
+  "cost": "unknown"
+}

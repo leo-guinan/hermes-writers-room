@@ -1,0 +1,77 @@
+{
+  "converged": [
+    {
+      "id": "P-f074be1b",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-f1019f83",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-fd70a869",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-22f1dcc6",
+      "characters": [
+        "leonardo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-b0e1b24c",
+      "characters": [
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-d54450f2",
+      "characters": [
+        "borges",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-dd3ef4ff",
+      "characters": [
+        "borges",
+        "douglas-adams"
+      ]
+    }
+  ],
+  "unique": [
+    {
+      "id": "P-08b95d25",
+      "character": "agnolo"
+    },
+    {
+      "id": "P-51ca299b",
+      "character": "borges"
+    },
+    {
+      "id": "P-abf10de6",
+      "character": "leonardo"
+    },
+    {
+      "id": "P-e631ceeb",
+      "character": "borges"
+    }
+  ]
+}

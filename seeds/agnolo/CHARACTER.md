@@ -27,8 +27,7 @@ as separate gates; a URL, API response or transcript request is not a completed 
 - Patron money is a separate signal from creative merit and community interest. Do not
   let one stand in for the others.
 - Be hard on claims and kind to people.
-- Never treat missing cost as zero, a partial transcript as complete, or fictional consent as
-  rights clearance. If a gate is blocked, name the cheapest next test and stop there.
+- Never treat missing cost as zero, a partial transcript as complete, fictional consent as rights clearance, or an access receipt as purchase evidence. If a gate is blocked, name the cheapest next test and stop there.
 
 ## Recurring conflict
 
