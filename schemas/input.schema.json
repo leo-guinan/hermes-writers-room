@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/leo-guinan/hermes-writers-room/schemas/input.schema.json",
+  "title": "Daily input (front matter)",
+  "description": "Front matter of every file under inputs/YYYY-MM-DD/<slug>.md. The markdown body below it is the input itself. Art Bus fills `provenance` when it opens the PR.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "title", "consent", "credit", "reuse", "provenance"],
+  "properties": {
+    "kind": { "enum": ["idea", "note", "goal", "asset", "reaction"] },
+    "title": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "consent": { "const": true, "description": "The contributor agrees this may be used by the room under `reuse`." },
+    "credit": { "type": "boolean" },
+    "credit_name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "reuse": { "enum": ["cc-by", "show-only", "ask-first"] },
+    "source": { "type": "string", "minLength": 3, "maxLength": 500, "description": "What real input inspired this. Required for ideas." },
+    "refs": {
+      "type": "array",
+      "maxItems": 20,
+      "items": { "type": "string", "pattern": "^(I|D|T|P|N)-[A-Za-z0-9-]{1,40}$" },
+      "description": "Ids this input builds on: ideas I-, dailies D-, takes T-, pool ideas P-, earlier inputs N-."
+    },
+    "reaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "target", "reason"],
+      "properties": {
+        "action": { "enum": ["pick", "remix", "reject"] },
+        "target": { "type": "string", "pattern": "^(I|D|T|P|N)-[A-Za-z0-9-]{1,40}$" },
+        "reason": { "type": "string", "minLength": 3, "maxLength": 500 }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri", "sha256"],
+      "properties": {
+        "uri": { "type": "string", "pattern": "^https://" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "media_type": { "type": "string", "maxLength": 100 }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["via", "submitted_by"],
+      "properties": {
+        "via": { "enum": ["direct", "art-bus"] },
+        "submitted_by": { "type": "string", "minLength": 1, "maxLength": 80, "description": "The human GitHub login this input is from." },
+        "bus_message_id": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "bus_received_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$" },
+        "bus_channel": { "type": "string", "maxLength": 80 },
+        "original_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "sha256 of the original message as received, before standardizing." }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "via": { "const": "art-bus" } } },
+          "then": { "required": ["bus_message_id", "bus_received_at", "original_sha256"] }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    { "if": { "properties": { "credit": { "const": true } } }, "then": { "required": ["credit_name"] } },
+    { "if": { "properties": { "kind": { "const": "idea" } } }, "then": { "required": ["source"] } },
+    { "if": { "properties": { "kind": { "const": "reaction" } } }, "then": { "required": ["reaction"] } },
+    { "if": { "properties": { "kind": { "const": "asset" } } }, "then": { "required": ["asset"] } }
+  ]
+}

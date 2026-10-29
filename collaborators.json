@@ -1,0 +1,5 @@
+{
+  "$comment": "Who may open input PRs. `authors` open direct PRs. `bots` may open PRs on behalf of someone (provenance.via = art-bus). Add the Art Bus account to `bots` when it goes live.",
+  "authors": ["leo-guinan"],
+  "bots": []
+}

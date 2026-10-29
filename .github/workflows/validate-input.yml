@@ -1,0 +1,85 @@
+name: validate-input
+
+# Every input PR is checked, and valid ones auto-merge.
+#
+# Why pull_request_target: the workflow and the validator come from the BASE branch, so a PR
+# cannot weaken its own check by editing them. The PR's content is only ever read as git
+# blobs by the trusted validator (git show <sha>:<path>). Nothing from the PR is checked out,
+# installed or executed, and this job has no secrets beyond the scoped GITHUB_TOKEN.
+# Keep it that way: never add a step that checks out or runs PR head code.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: validate-input-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout base branch (trusted scripts)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch the PR head as objects only
+        run: git fetch --no-tags origin "refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/pr/head"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Validate
+        id: validate
+        env:
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set +e
+          node scripts/validate-input.mjs --repo . --base "$BASE_SHA" --head refs/remotes/pr/head --author "$AUTHOR" > report.json 2> errors.txt
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat errors.txt
+
+      - name: Comment the reasons on a rejection
+        if: steps.validate.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          {
+            echo "This input was not accepted:"
+            echo
+            echo '```'
+            cat errors.txt
+            echo '```'
+            echo
+            echo "Fix the file(s) and push again; this check re-runs automatically."
+          } > comment.md
+          gh pr comment "$PR" --body-file comment.md
+
+      - name: Fail the check if invalid
+        if: steps.validate.outputs.code != '0'
+        run: exit 1
+
+      # Waits for the required "validate" check, then merges. Needs repo setting
+      # "Allow auto-merge" and a branch rule requiring this check (see docs/DAILIES.md).
+      - name: Enable auto-merge
+        if: steps.validate.outputs.code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: gh pr merge "$PR" --auto --squash

@@ -1,0 +1,10 @@
+# Everything except inputs/ and dailies/ is producer-owned.
+# Input PRs only add files under inputs/, so they never match these patterns
+# and can auto-merge without code-owner review.
+/.github/            @leo-guinan
+/scripts/            @leo-guinan
+/schemas/            @leo-guinan
+/scenes/             @leo-guinan
+/taping.json         @leo-guinan
+/collaborators.json  @leo-guinan
+/package.json        @leo-guinan

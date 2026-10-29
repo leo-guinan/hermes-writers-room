@@ -1,0 +1,19 @@
+{
+  "name": "hermes-writers-room",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Daily taping pipeline: PR inputs in, dailies out. Hermes-agent adapter for the writers' room model.",
+  "license": "CC0-1.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "validate": "node scripts/validate-input.mjs",
+    "window": "node scripts/window.mjs",
+    "tape": "node scripts/run-taping.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "yaml": "^2.6.0"
+  }
+}

@@ -1,0 +1,86 @@
+name: dailies
+
+# Once a day: take every input merged since the last run through the taping pipeline and
+# commit the result as dailies/<date>/. Dailies are immutable; a fix is a new run with a suffix.
+
+on:
+  schedule:
+    # UTC. 07:00 UTC = 02:00 US Eastern Standard (from Nov 1, 2026) and 03:00 Eastern Daylight
+    # until then. GitHub may start scheduled runs late; the window is defined by commits
+    # (cutoff_sha), not by the clock, so lateness cannot change what a run contains.
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Run date (YYYY-MM-DD). Default: today in America/New_York."
+        required: false
+      suffix:
+        description: "For a fix to an existing run: r2, r3, ... (never overwrites)."
+        required: false
+      allow_empty:
+        description: "Run even if there are no new inputs."
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dailies
+  cancel-in-progress: false
+
+jobs:
+  tape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --ignore-scripts
+
+      - name: Compute the window
+        id: window
+        env:
+          DATE: ${{ inputs.date }}
+          SUFFIX: ${{ inputs.suffix }}
+          ALLOW_EMPTY: ${{ inputs.allow_empty }}
+        run: |
+          DATE="${DATE:-$(TZ=America/New_York date +%F)}"
+          EXTRA=""
+          if [ -n "$SUFFIX" ]; then EXTRA="$EXTRA --suffix $SUFFIX"; fi
+          if [ "$ALLOW_EMPTY" = "true" ]; then EXTRA="$EXTRA --allow-empty"; fi
+          node scripts/window.mjs --date "$DATE" $EXTRA > window.json
+          cat window.json
+          echo "run=$(node -p "require('./window.json').runId")" >> "$GITHUB_OUTPUT"
+          echo "skip=$(node -p "require('./window.json').skip ? 'yes' : 'no'")" >> "$GITHUB_OUTPUT"
+
+      - name: Nothing to do
+        if: steps.window.outputs.skip == 'yes'
+        run: |
+          echo "Skipping - $(node -p "require('./window.json').skip")"
+
+      # Stub LLM until the Hermes-backed one lands. When it does, model keys go here as
+      # secrets and must stay out of the agents' tool environment (see docs/DAILIES.md).
+      - name: Run the taping
+        if: steps.window.outputs.skip == 'no'
+        run: node scripts/run-taping.mjs --window window.json
+
+      - name: Commit and tag
+        if: steps.window.outputs.skip == 'no'
+        env:
+          RUN: ${{ steps.window.outputs.run }}
+        run: |
+          git config user.name "dailies-bot"
+          git config user.email "dailies-bot@users.noreply.github.com"
+          git add "dailies/$RUN"
+          git commit -m "dailies: $RUN"
+          git tag "dailies-$RUN"
+          git push origin HEAD:${{ github.event.repository.default_branch }} "dailies-$RUN"
