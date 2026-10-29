@@ -52,14 +52,15 @@ export function rehearsePrompt({ character, take, k, inputs, compressions, lense
   ].join("\n\n");
 }
 
-export function turnPrompt({ speaker, n, total, ideas, transcript, scene }) {
+export function turnPrompt({ speaker, n, total, ideas, transcript, scene, capability }) {
   return [
     "TASK: turn",
     `You are ${cap(speaker)} in the take (turn ${n} of ${total}). Everyone is in the scene together now.`,
     `SCENE: ${scene}`,
+    capability ? `YOUR DISTINCTIVE CAPABILITY (${capability.job}):\n${capability.artifact}\nYour line must perform this job or make a consequential choice. Do not merely restate the room's rights conclusion.` : "Make a distinctive contribution or a consequential choice; do not merely agree.",
     transcript.length ? `TRANSCRIPT SO FAR:\n${transcript.map((t) => `${cap(t.speaker)}: ${t.line}`).join("\n")}` : "TRANSCRIPT SO FAR: (you speak first)",
     `IDEAS ON THE TABLE:\n${ideas.map((i) => `${i.id} (${i.lens}): ${i.text}`).join("\n")}`,
-    "Speak your next line in your own voice, at most 70 words. Build on at least one idea above. Then, on a final line, write USES: followed by the ids you actually used, comma-separated.",
+    "Speak your next line in your own voice, at most 70 words. Build on at least one idea above. Add new evidence, a new creative alternative, an executed action, a consequential disagreement, or a measurable result. Then, on a final line, write USES: followed by the ids you actually used, comma-separated.",
   ].join("\n\n");
 }
 

@@ -1,0 +1,18 @@
+{
+  "dropped_moves": [
+    {
+      "character": "agnolo",
+      "take": "T-agnolo-1",
+      "reason": "input_id is not one of today's inputs",
+      "move": {
+        "input_id": "N-N-1720dabc",
+        "lens": "confession",
+        "text": "I admit I want the grand version because it makes the room feel historically complete. Instead I mark the missing evidence on the script and choose the smallest test: an original audio exchange, a fixed runtime, a labor estimate, and a stopping rule. We can continue only when the next step changes the rights or cost picture."
+      }
+    }
+  ],
+  "invalid_ballots": [],
+  "turns_without_declared_uses": [],
+  "llm_failures": [],
+  "note": "Everything a model returned that was dropped, rejected or missing. Nothing here was used."
+}

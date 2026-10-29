@@ -1,0 +1,47 @@
+[
+  {
+    "id": "N-7a51a1ae",
+    "path": "inputs/2026-10-29/douglas-arrives-as-legal-counsel.md",
+    "sha256": "7a51a1aec1b22100358dc61f2d52bef1eadae25a2e46de6257373a9ff03bc870",
+    "kind": "idea",
+    "title": "Douglas arrives as legal counsel",
+    "credit": true,
+    "credit_name": "Leo",
+    "reuse": "show-only",
+    "provenance": {
+      "via": "direct",
+      "submitted_by": "leo-guinan"
+    },
+    "refs": []
+  },
+  {
+    "id": "N-1720dabc",
+    "path": "inputs/2026-10-29/quai-space-acquisition-receipt.md",
+    "sha256": "1720dabc59104cbdb2413c41a885ca7c96cf2d5b40ba8a5304065057e4a6bbab",
+    "kind": "note",
+    "title": "Quai Network Space acquisition receipt",
+    "credit": false,
+    "credit_name": null,
+    "reuse": "show-only",
+    "provenance": {
+      "via": "direct",
+      "submitted_by": "leo-guinan"
+    },
+    "refs": []
+  },
+  {
+    "id": "N-f86941a7",
+    "path": "inputs/2026-10-30/identity-arc-legal-counsel.md",
+    "sha256": "f86941a71da7d28744c5828b7f49ad8800b74a31690b2917fc3d0c4d90e94f14",
+    "kind": "idea",
+    "title": "Identity arc experiment — legal counsel without clearance",
+    "credit": true,
+    "credit_name": "Leo",
+    "reuse": "show-only",
+    "provenance": {
+      "via": "direct",
+      "submitted_by": "leo-guinan"
+    },
+    "refs": []
+  }
+]

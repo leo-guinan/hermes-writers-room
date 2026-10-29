@@ -1,0 +1,8 @@
+# Leonardo · rehearsal take 3
+
+_Simulating the others from compression._
+
+- **M-leonardo-3-1** → P-d54450f2 (interruption): I would begin mid-press conference: “Douglas Adams has joined us as counsel.” He interrupts: “Counsel for whom?” I ask whether authorship grants permission. He answers that it grants history, not automatically rights. Agnolo stops the rehearsal and requests the ledger. Borges records the interruption as fictional, not evidence of any real authorization.
+- **M-leonardo-3-2** → P-f074be1b (object): I would make the blocked receipt the scene’s only prop. Agnolo reads: one failed provider attempt, zero bytes, unknown cost, unknown speakers, unknown reuse permission. Douglas points at the blank fields and says, “At last, paperwork with a sense of mystery.” I choose the cheapest next test: repair authorized access before adapting anything.
+- **M-leonardo-3-3** → P-a82f2900 (reversal): I would have Douglas confidently announce, “As the author, I approve this adaptation,” then reverse himself: “No—I model the author in your rehearsal, and neither of us can grant a license.” Leonardo keeps the creative premise, Agnolo marks authorization disputed, and Borges preserves the rejected claim instead of smoothing it away.
+- **M-leonardo-3-4** → P-12dd42a6 (silence): I would stage a twenty-second pause after Leonardo pitches an original, rights-safe scene. Nobody claims it resembles anything. Douglas asks who owns the new words; Agnolo asks what was actually used; Borges notes that silence proves neither clearance nor infringement. Leonardo ends: “Then we can make something here—and document what remains unknown.”

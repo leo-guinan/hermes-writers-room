@@ -1,0 +1,32 @@
+{
+  "categories": {
+    "converged": {
+      "count": 9,
+      "ideas": [
+        "P-f074be1b",
+        "P-fd70a869",
+        "P-416d10b2",
+        "P-12dd42a6",
+        "P-51ca299b",
+        "P-a82f2900",
+        "P-abf10de6",
+        "P-d050d7d2",
+        "P-d54450f2"
+      ],
+      "ballots": 36,
+      "mean_position": 0.4828
+    },
+    "unique": {
+      "count": 3,
+      "ideas": [
+        "P-21badfde",
+        "P-84fcf563",
+        "P-b0e1b24c"
+      ],
+      "ballots": 9,
+      "mean_position": 0.5687
+    }
+  },
+  "creative_reactions_on_previous_run": [],
+  "note": "mean_position: 1 = always ranked first, 0 = always last. Reactions are advisory outcomes from creatives; the join to category and prior rank is how room agreement gets compared with actual performance."
+}

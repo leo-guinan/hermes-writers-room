@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-3",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-3-1",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I let Douglas begin by authorizing the adaptation, then make him revoke his own sentence: authorship explains influence, not present rights. I place two paths on the rehearsal slate—original scene now, or licensed adaptation later—marking the latter rights-unclear, with no fictional consent treated as clearance."
+    },
+    {
+      "id": "M-agnolo-3-2",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I put the receipt.json on the press table as our only witness: access_blocked, one read attempt, zero bytes, unknown cost, no request ID. The cheapest next test is repairing the authorized profile; until then, we cannot claim the Space, its speakers, audio, transcript, or reuse permission."
+    },
+    {
+      "id": "M-agnolo-3-3",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-d050d7d2",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "interruption",
+      "text": "I interrupt Leonardo before generation: three original audio sketches, each with defined runtime, labor, deliverable, and stop rule. They preserve the patron’s Future Radio premise without disputed text. I compare them against waiting for rights review: delay increases, evidence remains absent, and no budget estimate becomes fact."
+    },
+    {
+      "id": "M-agnolo-3-4",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "I ask Douglas one question—what document authorizes this use?—then leave the microphone silent. His comic legal reversal can expose the gap, but cannot fill it. We end with three explicit states: influence documented, authorship asserted, authorization unknown; rejected: treating confidence as permission."
+    }
+  ]
+}

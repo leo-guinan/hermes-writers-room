@@ -24,6 +24,20 @@ export const DEFAULT_LENSES = ["reversal", "escalation", "silence", "object", "c
 export const DEFAULT_SCENE = "An open scene: the characters work out together what to do with today's material, each in their own voice.";
 const h = (...parts) => sha256(parts.join("\u0000"));
 
+// Cheap, transparent gate for the room's stopping rule. This is a heuristic receipt, not a
+// semantic claim: it records whether a line contains observable evidence of a new contribution.
+function marginalSignals(line, previous = []) {
+  const text = String(line ?? "").toLowerCase();
+  const signals = [];
+  if (/receipt|evidence|unknown|establish|resolve|rights-holder|provenance/.test(text)) signals.push("new evidence");
+  if (/original|scene|stage|write|make|create|alternative|adapt/.test(text)) signals.push("new creative alternative");
+  if (/choose|do |seek|record|test|calculate|pause|continue|build/.test(text)) signals.push("executed action");
+  if (/but|instead|cannot|can't|no clearance|disagree|refuse/.test(text)) signals.push("consequential disagreement");
+  if (/\$|\b\d+(?:\.\d+)?\b|seconds?|minutes?|zero|one|two|three|four/.test(text)) signals.push("measurable result");
+  const duplicate = previous.some((p) => String(p).trim().toLowerCase() === text.trim());
+  return { signals: [...new Set(signals)], duplicate, contributes: signals.length > 0 && !duplicate };
+}
+
 function parseArgs(argv) {
   const a = {};
   for (let i = 0; i < argv.length; i += 2) a[argv[i].replace(/^--/, "")] = argv[i + 1];
@@ -162,6 +176,7 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
   }
   emit("take/turns.jsonl", turns.map((t) => JSON.stringify(t)).join("\n") + (turns.length ? "\n" : ""));
   emit("take/transcript.md", `# The take · ${window.runId}\n\n_All pooled ideas, one scene._\n\n${turns.map((t) => `**${cap(t.speaker)}** (turn ${t.turn}; ideas ${t.uses.join(", ")}): ${t.line}`).join("\n\n") || "_No ideas in the pool._"}\n`);
+  const marginal = turns.map((t, i) => ({ turn: t.turn, speaker: t.speaker, ...marginalSignals(t.line, turns.slice(0, i).map((x) => x.line)) }));
 
   // ---- 5. votes: ranked, blind labels, no self-voting, advisory, validated -----------------
   const poolById = new Map(poolIdeas.map((i) => [i.id, i]));
@@ -243,6 +258,13 @@ export async function runTaping({ repo, window, outRoot = "dailies", config, llm
   emit("diffs/rehearsal-to-take.json", poolIdeas.map((i) => ({ id: i.id, origins: i.origins, used_in_turns: turns.filter((t) => t.uses.includes(i.id)).map((t) => t.turn) })));
   emit("diffs/compression-error.json", { status: "not-computed", note: "Needs real compressions and real takes: predicted vs actual behaviour per ordered pair." });
   emit("diffs/voice-drift.json", { status: "not-computed", note: "Needs real lines compared against each character's pinned seed." });
+  emit("diffs/marginal-contribution.json", {
+    evaluator: "heuristic-v1",
+    signals: config.identityArc?.marginalContributionSignals ?? ["new evidence", "new creative alternative", "executed action", "consequential disagreement", "measurable result"],
+    turns: marginal,
+    stop_recommendation: marginal.find((m) => !m.contributes)?.turn ?? null,
+    note: "Heuristic receipt only. It is not an independent semantic EVAL or a legal judgment. A future evaluator may replace it, but must preserve this receipt.",
+  });
   const stats = llm.stats();
   emit("diffs/quality.json", { ...quality, llm_failures: stats.failures, note: "Everything a model returned that was dropped, rejected or missing. Nothing here was used." });
 

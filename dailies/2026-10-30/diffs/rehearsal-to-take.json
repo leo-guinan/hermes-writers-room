@@ -1,0 +1,136 @@
+[
+  {
+    "id": "P-f074be1b",
+    "origins": [
+      "M-borges-1-1",
+      "M-borges-2-1",
+      "M-borges-3-1",
+      "M-leonardo-1-2",
+      "M-leonardo-2-2",
+      "M-leonardo-3-2",
+      "M-agnolo-1-1",
+      "M-agnolo-2-1",
+      "M-agnolo-3-2",
+      "M-douglas-adams-1-3",
+      "M-douglas-adams-2-3"
+    ],
+    "used_in_turns": [
+      1
+    ]
+  },
+  {
+    "id": "P-fd70a869",
+    "origins": [
+      "M-borges-1-2",
+      "M-borges-2-3",
+      "M-borges-3-3",
+      "M-leonardo-1-1",
+      "M-agnolo-2-2",
+      "M-agnolo-3-1",
+      "M-douglas-adams-1-1",
+      "M-douglas-adams-2-1",
+      "M-douglas-adams-3-1"
+    ],
+    "used_in_turns": [
+      1
+    ]
+  },
+  {
+    "id": "P-416d10b2",
+    "origins": [
+      "M-leonardo-1-3",
+      "M-agnolo-2-3",
+      "M-douglas-adams-1-2",
+      "M-douglas-adams-2-2"
+    ],
+    "used_in_turns": [
+      2
+    ]
+  },
+  {
+    "id": "P-12dd42a6",
+    "origins": [
+      "M-borges-2-2",
+      "M-leonardo-2-4",
+      "M-leonardo-3-4"
+    ],
+    "used_in_turns": [
+      2
+    ]
+  },
+  {
+    "id": "P-51ca299b",
+    "origins": [
+      "M-leonardo-1-4",
+      "M-douglas-adams-1-4",
+      "M-douglas-adams-2-4",
+      "M-douglas-adams-3-4"
+    ],
+    "used_in_turns": [
+      3
+    ]
+  },
+  {
+    "id": "P-a82f2900",
+    "origins": [
+      "M-leonardo-2-3",
+      "M-leonardo-3-3",
+      "M-agnolo-1-2"
+    ],
+    "used_in_turns": [
+      3
+    ]
+  },
+  {
+    "id": "P-abf10de6",
+    "origins": [
+      "M-borges-2-4",
+      "M-douglas-adams-3-2"
+    ],
+    "used_in_turns": [
+      4
+    ]
+  },
+  {
+    "id": "P-d050d7d2",
+    "origins": [
+      "M-borges-1-3",
+      "M-borges-3-2",
+      "M-agnolo-3-3"
+    ],
+    "used_in_turns": [
+      4
+    ]
+  },
+  {
+    "id": "P-d54450f2",
+    "origins": [
+      "M-leonardo-2-1",
+      "M-leonardo-3-1",
+      "M-agnolo-1-3"
+    ],
+    "used_in_turns": []
+  },
+  {
+    "id": "P-21badfde",
+    "origins": [
+      "M-borges-3-4"
+    ],
+    "used_in_turns": []
+  },
+  {
+    "id": "P-84fcf563",
+    "origins": [
+      "M-douglas-adams-3-3"
+    ],
+    "used_in_turns": []
+  },
+  {
+    "id": "P-b0e1b24c",
+    "origins": [
+      "M-agnolo-2-4",
+      "M-agnolo-3-4"
+    ],
+    "used_in_turns": []
+  }
+]

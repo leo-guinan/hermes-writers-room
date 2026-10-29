@@ -1,0 +1,119 @@
+[
+  {
+    "id": "P-fd70a869",
+    "positions": {
+      "borges": 0,
+      "leonardo": 0.6363636363636364,
+      "agnolo": 0.8,
+      "douglas-adams": 0.4
+    },
+    "spread": 0.8
+  },
+  {
+    "id": "P-12dd42a6",
+    "positions": {
+      "borges": 0.9,
+      "leonardo": 0.9090909090909091,
+      "agnolo": 0.3,
+      "douglas-adams": 0.9
+    },
+    "spread": 0.6090909090909091
+  },
+  {
+    "id": "P-d54450f2",
+    "positions": {
+      "borges": 0.7,
+      "leonardo": 0.7272727272727273,
+      "agnolo": 1,
+      "douglas-adams": 0.5
+    },
+    "spread": 0.5
+  },
+  {
+    "id": "P-abf10de6",
+    "positions": {
+      "borges": 0.4,
+      "leonardo": 0.8181818181818182,
+      "agnolo": 0.6,
+      "douglas-adams": 0.7
+    },
+    "spread": 0.4181818181818182
+  },
+  {
+    "id": "P-51ca299b",
+    "positions": {
+      "borges": 0.5,
+      "leonardo": 0.5454545454545454,
+      "agnolo": 0.9,
+      "douglas-adams": 0.6
+    },
+    "spread": 0.4
+  },
+  {
+    "id": "P-d050d7d2",
+    "positions": {
+      "borges": 0.6,
+      "leonardo": 0.36363636363636365,
+      "agnolo": 0.5,
+      "douglas-adams": 0.2
+    },
+    "spread": 0.39999999999999997
+  },
+  {
+    "id": "P-f074be1b",
+    "positions": {
+      "borges": 0.8,
+      "leonardo": 0.45454545454545453,
+      "agnolo": 0.7,
+      "douglas-adams": 0.8
+    },
+    "spread": 0.3454545454545455
+  },
+  {
+    "id": "P-84fcf563",
+    "positions": {
+      "borges": 0.2,
+      "leonardo": 0.18181818181818182,
+      "agnolo": 0.4
+    },
+    "spread": 0.2181818181818182
+  },
+  {
+    "id": "P-21badfde",
+    "positions": {
+      "leonardo": 0,
+      "agnolo": 0.1,
+      "douglas-adams": 0
+    },
+    "spread": 0.1
+  },
+  {
+    "id": "P-a82f2900",
+    "positions": {
+      "borges": 0.1,
+      "leonardo": 0.09090909090909091,
+      "agnolo": 0,
+      "douglas-adams": 0.1
+    },
+    "spread": 0.1
+  },
+  {
+    "id": "P-416d10b2",
+    "positions": {
+      "borges": 0.3,
+      "leonardo": 0.2727272727272727,
+      "agnolo": 0.2,
+      "douglas-adams": 0.3
+    },
+    "spread": 0.09999999999999998
+  },
+  {
+    "id": "P-b0e1b24c",
+    "positions": {
+      "borges": 1,
+      "leonardo": 1,
+      "douglas-adams": 1
+    },
+    "spread": 0
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-2",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-2-1",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I put the receipt.json on the lectern: access_blocked, one read attempt, zero bytes, unknown cost, no request ID. We cannot call the Space evidence, much less clearance. Path one is repair the authorized profile and identify it; only then can we price reuse, delay, or permission."
+    },
+    {
+      "id": "M-agnolo-2-2",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I ask Douglas to authorize one sentence, then reverse the question: can he show a current rights document rather than a memory of authorship? His arrival changes the scene, not the rights state. Until documented authorization exists, our adaptation must remain original and legally reviewed."
+    },
+    {
+      "id": "M-agnolo-2-3",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-416d10b2",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "escalation",
+      "text": "I offer three bounded paths: original scene now, cheapest and immediately performable; documented adaptation after rights research, slower with uncertain cost; or pause the announcement until clearance, safest but longest delay. Leonardo must prototype only the first, while Borges records every rejected branch."
+    },
+    {
+      "id": "M-agnolo-2-4",
+      "character": "agnolo",
+      "take": "T-agnolo-2",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "I let the press-conference question hang: “Who authorized this?” No character answers with a joke. We hear the projector, then I mark the ledger: creative influence is not authorship, authorship is not authorization, and fictional consent is not evidence. The silence becomes our stopping rule."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# Leonardo · rehearsal take 1
+
+_Simulating the others from compression._
+
+- **M-leonardo-1-1** → P-fd70a869 (reversal): I would begin with Douglas announcing, “I’m here to authorize the adaptation,” then immediately reversing himself: “No—I’m here to demonstrate why authorship is not authorization.” Leonardo pitches the original Future Radio premise; Agnolo asks what document grants use; Borges holds up the receipt and names only what it proves: access blocked, everything else unknown.
+- **M-leonardo-1-2** → P-f074be1b (object): I would make the blocked Space receipt the scene’s only prop. Leonardo treats its identifier like a golden ticket; Agnolo turns it over as an empty ledger; Borges reads the precise fields aloud. Douglas jokes that even a brilliant author cannot sign a license with a missing page. The rehearsal ends on zero bytes, not invented audio.
+- **M-leonardo-1-3** → P-416d10b2 (escalation): I would escalate through three pitches: “inspired by,” “adapted from,” and “authorized use.” Each sounds bolder until Agnolo demands evidence, cost, and delay. Douglas supplies comic counsel, not permission. Leonardo finally chooses the cheapest valid test—repair the authorized read profile—while keeping the original scene independent of disputed material.
+- **M-leonardo-1-4** → P-51ca299b (callback): I would open with Leonardo saying, “The future belongs to whoever tells it,” then callback at the interruption: “Not whoever owns the microphone.” Douglas distinguishes influence from authorship and rights; Borges refuses to fill archival gaps; Agnolo marks the gate unresolved. Leonardo closes by rehearsing a new, wholly original broadcast about becoming someone.

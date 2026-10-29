@@ -1,0 +1,29 @@
+{
+  "previous_run": "2026-10-29-space2",
+  "new": [
+    "P-416d10b2",
+    "P-12dd42a6",
+    "P-a82f2900",
+    "P-d050d7d2",
+    "P-21badfde",
+    "P-84fcf563"
+  ],
+  "persisting": [
+    "P-f074be1b",
+    "P-fd70a869",
+    "P-51ca299b",
+    "P-abf10de6",
+    "P-d54450f2",
+    "P-b0e1b24c"
+  ],
+  "dropped": [
+    "P-f1019f83",
+    "P-22f1dcc6",
+    "P-dd3ef4ff",
+    "P-08b95d25",
+    "P-e631ceeb"
+  ],
+  "carried_by_creative_pick": [],
+  "rejected_by_creatives": [],
+  "reactions": []
+}

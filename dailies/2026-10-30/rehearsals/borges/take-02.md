@@ -1,0 +1,8 @@
+# Borges · rehearsal take 2
+
+_Simulating the others from compression._
+
+- **M-borges-2-1** → P-f074be1b (object): I place the receipt on the lectern as the scene’s only hard object: access_blocked, one provider read attempt, zero bytes, unknown cost, no request ID. I narrate what it proves and refuse to invent the Space’s speakers, audio, duration, or reuse permission. The next action is repairing the authorized read profile and resolving the identifier.
+- **M-borges-2-2** → P-12dd42a6 (silence): I let the press conference fall silent whenever someone says “the author approved it.” Into that silence I insert an original Future Radio exchange: influence may shape a work, authorship may describe its making, but neither phrase supplies authorization. The pause becomes the boundary; no historical voice is reproduced, and no fictional presence signs anything.
+- **M-borges-2-3** → P-fd70a869 (reversal): I give Douglas the ceremonial title “legal counsel,” then reverse its force: he cannot turn presence into a license, confidence into representation, or a joke into estate consent. He argues that paperwork is not artistic legitimacy; I answer that artistic legitimacy is not documented clearance. The scene keeps both truths unresolved and visible.
+- **M-borges-2-4** → P-abf10de6 (escalation): I make the room choose among three tested paths: wait for the authorized read and preserve the blocked gate; build an entirely original prototype using only documented facts; or stop before spending further. Agnolo scores cost, delay, evidence, and participation. Leonardo supplies the audio-first prototype. We stop when another argument adds no new evidence or option.

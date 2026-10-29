@@ -1,0 +1,46 @@
+{
+  "take": "T-leonardo-3",
+  "character": "leonardo",
+  "moves": [
+    {
+      "id": "M-leonardo-3-1",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-d54450f2",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "interruption",
+      "text": "I would begin mid-press conference: “Douglas Adams has joined us as counsel.” He interrupts: “Counsel for whom?” I ask whether authorship grants permission. He answers that it grants history, not automatically rights. Agnolo stops the rehearsal and requests the ledger. Borges records the interruption as fictional, not evidence of any real authorization."
+    },
+    {
+      "id": "M-leonardo-3-2",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "I would make the blocked receipt the scene’s only prop. Agnolo reads: one failed provider attempt, zero bytes, unknown cost, unknown speakers, unknown reuse permission. Douglas points at the blank fields and says, “At last, paperwork with a sense of mystery.” I choose the cheapest next test: repair authorized access before adapting anything."
+    },
+    {
+      "id": "M-leonardo-3-3",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-a82f2900",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "reversal",
+      "text": "I would have Douglas confidently announce, “As the author, I approve this adaptation,” then reverse himself: “No—I model the author in your rehearsal, and neither of us can grant a license.” Leonardo keeps the creative premise, Agnolo marks authorization disputed, and Borges preserves the rejected claim instead of smoothing it away."
+    },
+    {
+      "id": "M-leonardo-3-4",
+      "character": "leonardo",
+      "take": "T-leonardo-3",
+      "pool_id": "P-12dd42a6",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "silence",
+      "text": "I would stage a twenty-second pause after Leonardo pitches an original, rights-safe scene. Nobody claims it resembles anything. Douglas asks who owns the new words; Agnolo asks what was actually used; Borges notes that silence proves neither clearance nor infringement. Leonardo ends: “Then we can make something here—and document what remains unknown.”"
+    }
+  ]
+}

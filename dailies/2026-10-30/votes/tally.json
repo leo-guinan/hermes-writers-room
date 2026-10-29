@@ -1,0 +1,198 @@
+{
+  "advisory": true,
+  "method": "borda",
+  "tiebreak": "producer",
+  "ballots_counted": 4,
+  "ballots_invalid": 0,
+  "ideas": [
+    {
+      "id": "P-a82f2900",
+      "points": 38,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-21badfde",
+      "points": 30,
+      "tie": true,
+      "category": "unique",
+      "originators": [
+        "borges"
+      ]
+    },
+    {
+      "id": "P-416d10b2",
+      "points": 30,
+      "tie": true,
+      "category": "converged",
+      "originators": [
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-d050d7d2",
+      "points": 24,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-84fcf563",
+      "points": 23,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-fd70a869",
+      "points": 22,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-51ca299b",
+      "points": 15,
+      "tie": true,
+      "category": "converged",
+      "originators": [
+        "leonardo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-abf10de6",
+      "points": 15,
+      "tie": true,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-f074be1b",
+      "points": 13,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo",
+        "douglas-adams"
+      ]
+    },
+    {
+      "id": "P-d54450f2",
+      "points": 11,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-12dd42a6",
+      "points": 10,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-b0e1b24c",
+      "points": 0,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "agnolo"
+      ]
+    }
+  ],
+  "takes": [
+    {
+      "id": "T-leonardo-1",
+      "points": 25,
+      "tie": false
+    },
+    {
+      "id": "T-final",
+      "points": 21,
+      "tie": false
+    },
+    {
+      "id": "T-agnolo-3",
+      "points": 20,
+      "tie": true
+    },
+    {
+      "id": "T-leonardo-2",
+      "points": 20,
+      "tie": true
+    },
+    {
+      "id": "T-leonardo-3",
+      "points": 19,
+      "tie": false
+    },
+    {
+      "id": "T-borges-3",
+      "points": 15,
+      "tie": false
+    },
+    {
+      "id": "T-borges-2",
+      "points": 14,
+      "tie": false
+    },
+    {
+      "id": "T-agnolo-1",
+      "points": 13,
+      "tie": false
+    },
+    {
+      "id": "T-agnolo-2",
+      "points": 12,
+      "tie": false
+    },
+    {
+      "id": "T-douglas-adams-2",
+      "points": 8,
+      "tie": false
+    },
+    {
+      "id": "T-douglas-adams-3",
+      "points": 7,
+      "tie": false
+    },
+    {
+      "id": "T-borges-1",
+      "points": 6,
+      "tie": false
+    },
+    {
+      "id": "T-douglas-adams-1",
+      "points": 0,
+      "tie": false
+    }
+  ]
+}

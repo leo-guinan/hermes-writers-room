@@ -1,0 +1,46 @@
+{
+  "take": "T-douglas-adams-3",
+  "character": "douglas-adams",
+  "moves": [
+    {
+      "id": "M-douglas-adams-3-1",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-3",
+      "pool_id": "P-fd70a869",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "reversal",
+      "text": "I enter wearing a barrister’s wig and announce: “As the author, I can confirm the work is mine. As legal counsel, I can confirm that sentence authorizes precisely nothing.” Joke rank 1: authorship is the family resemblance; rights authorization is the family trust, and nobody has shown me the trustee."
+    },
+    {
+      "id": "M-douglas-adams-3-2",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-3",
+      "pool_id": "P-abf10de6",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "escalation",
+      "text": "Borges produces the receipt: access_blocked, 401, zero bytes, unknown cost. Leonardo calls it a dramatic pause. I escalate: “Excellent—an audio drama with no audio. I hereby authorize the silence, subject to locating whoever owns it.” Joke rank 2: even the missing permission has better documentation than the permission."
+    },
+    {
+      "id": "M-douglas-adams-3-3",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-3",
+      "pool_id": "P-84fcf563",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "object",
+      "text": "I place three folders on the table: AUTHORSHIP, INFLUENCE, AUTHORIZATION. “This first one proves I wrote something. This second proves someone was inspired. The third is empty, which is the most legally accurate prop in the room.” Joke rank 3: the blank folder is not a clearance; it is merely honest stationery."
+    },
+    {
+      "id": "M-douglas-adams-3-4",
+      "character": "douglas-adams",
+      "take": "T-douglas-adams-3",
+      "pool_id": "P-51ca299b",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "callback",
+      "text": "After Leonardo pitches an original, audio-first route, I approve the invention but not the borrowing: “Build the new machine; leave the locked archive locked.” Then I point to the empty folder: “We have achieved a rights decision.” Borges corrects me: “A rights status.” I bow. “Naturally. Even my jokes require authorization.”"
+    }
+  ]
+}

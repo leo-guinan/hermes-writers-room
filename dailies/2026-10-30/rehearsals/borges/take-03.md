@@ -1,0 +1,8 @@
+# Borges · rehearsal take 3
+
+_Simulating the others from compression._
+
+- **M-borges-3-1** → P-f074be1b (object): I place the receipt on the microphone stand as the scene’s only hard object: access_blocked, one authorized read attempt, zero bytes, unknown cost, no request ID. I narrate what it establishes—and refuse to describe the Space. The next action is repairing the authorized profile and resolving the identifier, not inventing its contents.
+- **M-borges-3-2** → P-d050d7d2 (interruption): I interrupt the press conference with an original audio-only adaptation: three voices build a future broadcast from silence, static, and a listener’s choice, using no disputed characters or phrases. Leonardo gets a tangible prototype; Agnolo gets a cheap test; the stopping rule is one recorded pass and one audience comprehension check.
+- **M-borges-3-3** → P-fd70a869 (reversal): I let Douglas announce, ‘I am the author, therefore I authorize nothing by standing here.’ The joke reverses ceremony into a rights question: authorship may explain influence, but documented authority, current permission, and professional review remain separate unknowns. His title becomes evidence of presence, never clearance.
+- **M-borges-3-4** → P-21badfde (confession): I confess that my historical catalogue is not a license catalogue. Then I sort four cards: authorship, creative influence, authorization, compensation. Each card demands different evidence. We reject the tempting shortcut—‘the original voice approved it’—and stop when the room has produced no new artifact, evidence, disagreement, or measurable result.

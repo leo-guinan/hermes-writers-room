@@ -72,7 +72,7 @@ test("a taping writes the full dailies layout, MANIFEST last and complete", asyn
   const repo = seeded();
   const { runDir, manifest } = await tape(repo, "2026-10-30");
   for (const p of ["INDEX.md", "MANIFEST.json", "pool.json", "inputs/index.json", "take/transcript.md", "take/turns.jsonl", "votes/ballots.json", "votes/tally.json",
-    "diffs/vs-previous.json", "diffs/convergence.json", "diffs/vote-splits.json", "diffs/rehearsal-to-take.json", "diffs/compression-error.json", "diffs/voice-drift.json",
+    "diffs/vs-previous.json", "diffs/convergence.json", "diffs/vote-splits.json", "diffs/rehearsal-to-take.json", "diffs/compression-error.json", "diffs/voice-drift.json", "diffs/marginal-contribution.json",
     "compression/borges__of__leonardo.md", "rehearsals/agnolo/take-03.md", "rehearsals/agnolo/take-03.json"]) {
     assert.ok(existsSync(join(runDir, p)), `missing ${p}`);
   }

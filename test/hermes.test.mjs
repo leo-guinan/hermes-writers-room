@@ -110,10 +110,11 @@ test("bodies are truncated to the prompt limit", () => {
 });
 
 test("a rehearsal prompt carries the data rule and only the OTHER characters' models", () => {
-  const p = rehearsePrompt({ character: "borges", take: 1, k: 2, inputs: [{ id: "N-aaaaaaaa", kind: "idea", title: "t", body: "b" }], compressions: { leonardo: "L-model", agnolo: "A-model" }, lenses: ["reversal", "silence"], scene: "s", maxBodyChars: 100 });
+  const p = rehearsePrompt({ character: "borges", take: 1, k: 2, inputs: [{ id: "N-aaaaaaaa", kind: "idea", title: "t", body: "b" }], compressions: { leonardo: "L-model", agnolo: "A-model" }, lenses: ["reversal", "silence"], scene: "s", maxBodyChars: 100, capability: { job: "evidence", artifact: "Document the unknowns." } });
   assert.ok(p.includes(DATA_RULE));
   assert.ok(p.includes("YOUR MODEL OF LEONARDO") && p.includes("YOUR MODEL OF AGNOLO"));
   assert.ok(!p.includes("YOUR MODEL OF BORGES"));
+  assert.ok(p.includes("CAPABILITY CONTRACT (evidence)") && p.includes("Document the unknowns."));
 });
 
 test("a compression prompt takes the public description only", () => {

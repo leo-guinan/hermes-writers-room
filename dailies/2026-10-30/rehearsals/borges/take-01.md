@@ -1,0 +1,8 @@
+# Borges · rehearsal take 1
+
+_Simulating the others from compression._
+
+- **M-borges-1-1** → P-f074be1b (object): I would place the receipt on the microphone stand and read only what it establishes: access_blocked, one provider attempt, zero bytes. I would name the unknowns—Space identity, audio, transcript, speakers, duration, cost, reuse permission—and mark the cheapest resolving action: repair the authorized read profile, then resolve the identifier.
+- **M-borges-1-2** → P-fd70a869 (reversal): I would let Douglas announce himself as legal counsel, then reverse the room’s celebration: original authorship is not current authorization. His title, confidence, and fictional presence grant nothing. We would make the joke land by having the press release request his signature, while he admits only documented professional review can answer rights.
+- **M-borges-1-3** → P-d050d7d2 (interruption): I would interrupt the rehearsal with an entirely original audio-first scene: a host asks whether influence, authorship, and permission are the same verb. Leonardo supplies three short staging options; Agnolo scores them by evidence, cost, delay, and participation. We stop after the cheapest option produces a measurable listening test.
+- **M-borges-1-4** → P-e631ceeb (confession): I would confess that I want the historical author’s aura to make the adaptation feel already legitimate. Then I would separate the emotional fact from the legal one: the room may be creatively inspired, but the receipt proves no clearance. We retain the scene as a prototype, reject invented consent, and write a stopping rule.

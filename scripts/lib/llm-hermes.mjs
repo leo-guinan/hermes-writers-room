@@ -60,7 +60,7 @@ export function createHermesLlm({ config, runId, seeds, run = runHermes, env = {
       return Array.isArray(json?.moves) ? json.moves : [];
     },
     async turn({ speaker, n, total, ideas, transcript, scene }) {
-      const text = await ask(speaker, turnPrompt({ speaker, n, total, ideas, transcript, scene }));
+      const text = await ask(speaker, turnPrompt({ speaker, n, total, ideas, transcript, scene, capability: config.capabilities?.[speaker] }));
       return splitUses(text);
     },
     async vote({ voter, ideaCards, takeCards }) {
