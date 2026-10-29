@@ -56,7 +56,7 @@ export function createHermesLlm({ config, runId, seeds, run = runHermes, env = {
       return text.slice(0, 1500);
     },
     async rehearse({ character, take, k, inputs, compressions, lenses, scene, maxBodyChars }) {
-      const json = await askJson(character, rehearsePrompt({ character, take, k, inputs, compressions, lenses, scene, maxBodyChars }), "rehearse", { take });
+      const json = await askJson(character, rehearsePrompt({ character, take, k, inputs, compressions, lenses, scene, maxBodyChars, capability: config.capabilities?.[character] }), "rehearse", { take });
       return Array.isArray(json?.moves) ? json.moves : [];
     },
     async turn({ speaker, n, total, ideas, transcript, scene }) {

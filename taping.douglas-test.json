@@ -32,8 +32,48 @@
     ]
   },
   "take": {
-    "turnLimit": 14,
-    "stoppingRule": "scene card"
+    "turnLimit": 4,
+    "stoppingRule": "marginal contribution",
+    "deliberationLimit": 4
+  },
+  "identityArc": {
+    "thesis": "Future Radio: A Story of Characters Becoming Themselves.",
+    "mission": "Make everyone an artist.",
+    "method": "Broadcast directions from the past to help people create the future.",
+    "promise": "Arm the artists. Let the art speak.",
+    "preserveAlternatives": true,
+    "requireCapabilityArtifact": true,
+    "marginalContributionSignals": [
+      "new evidence",
+      "new creative alternative",
+      "executed action",
+      "consequential disagreement",
+      "measurable result"
+    ]
+  },
+  "capabilities": {
+    "borges": {
+      "job": "evidence",
+      "artifact": "Document what the receipt establishes, what remains unknown, and what evidence would resolve the uncertainty."
+    },
+    "leonardo": {
+      "job": "creation",
+      "artifact": "Write an original 20-second scene that works without disputed material."
+    },
+    "agnolo": {
+      "job": "economics",
+      "artifact": "Compare viable paths using actual cost, delay, rights state and evidence."
+    },
+    "douglas-adams": {
+      "job": "performance",
+      "artifact": "Write and rank three original legal-counsel reversal jokes without treating simulated consent as clearance."
+    }
+  },
+  "eval": {
+    "identity": "voice plus distinctive capability",
+    "independent": "distinguishability by style and function",
+    "marginalContribution": true,
+    "stopWhenNoNewSignal": true
   },
   "vote": {
     "ballot": "ranked",

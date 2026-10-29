@@ -36,13 +36,14 @@ export function compressPrompt({ by, of, persona, canon }) {
   ].join("\n\n");
 }
 
-export function rehearsePrompt({ character, take, k, inputs, compressions, lenses, scene, maxBodyChars }) {
+export function rehearsePrompt({ character, take, k, inputs, compressions, lenses, scene, maxBodyChars, capability }) {
   const others = Object.entries(compressions).map(([name, text]) => `YOUR MODEL OF ${cap(name).toUpperCase()} (lossy, may be wrong):\n${text}`);
   return [
     "TASK: rehearse",
     `You are ${cap(character)}, rehearsing alone (take ${take}). The other characters are only your models of them. Try ${k} different approaches to the scene using today's material.`,
     DATA_RULE,
     `SCENE: ${scene}`,
+    capability ? `CAPABILITY CONTRACT (${capability.job}):\n${capability.artifact}\nDo this work distinctly in your moves. A line that only agrees with another character is not a contribution.` : "CAPABILITY CONTRACT: You must make a distinct contribution, not only agree.",
     ...others,
     "TODAY'S MATERIAL:",
     ...inputs.map((i) => dataBlock(i, maxBodyChars)),

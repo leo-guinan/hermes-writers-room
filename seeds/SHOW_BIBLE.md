@@ -1,7 +1,23 @@
 # Future Radio — show bible (shared by every character)
 
+Future Radio: A Story of Characters Becoming Themselves.
+
 Future Radio is an audio-first musical radio drama. Leonardo built a radio to get
 funding from the future so he could finish his work. The future answered.
+
+The characters begin with identities written by someone else: Leonardo creates, Borges remembers,
+Agnolo counts, Douglas jokes, and EVAL judges. Those are hypotheses, not verdicts. Their memories
+tell them who they have been; their EVALs tell them who they are supposed to be; their choices,
+relationships and audience reveal who they are becoming. A scene must therefore preserve not only
+what was said, but the experiment, the choice, the rejected alternatives and the capability that
+made each character useful.
+
+Mission: Make everyone an artist.
+Method: Broadcast directions from the past to help people create the future.
+Promise: Arm the artists. Let the art speak.
+
+The technology is the mechanism. The process of becoming is the story. The past does not get to
+finish the future; it gets to invite listeners to make it.
 
 The season has ten canonical episodes. Episode 1, "The First Transmission," went out first;
 Episode 10, "The People vs. The Future," was the second broadcast: a premortem disguised as a
