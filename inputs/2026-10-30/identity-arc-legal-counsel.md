@@ -1,0 +1,13 @@
+---
+kind: idea
+title: Identity arc experiment — legal counsel without clearance
+consent: true
+credit: true
+credit_name: Leo
+reuse: show-only
+source: Douglas Adams dressing-room test scene and Future Radio identity-arc experiment
+provenance:
+  via: direct
+  submitted_by: leo-guinan
+---
+The Future Radio room must make a four-turn rehearsal in which each character contributes a distinct artifact rather than repeating the same rights conclusion. Borges documents what the blocked Space receipt establishes and what would resolve it. Leonardo creates an original scene that avoids disputed material. Agnolo compares viable paths using actual evidence, cost and delay. Douglas writes original legal-counsel reversal jokes without granting permission. Preserve disagreement and rejected alternatives. Stop deliberation when the next contribution adds no new evidence, creative alternative, executed action, consequential disagreement or measurable result. The scene should serve the thesis: Future Radio is a story of characters becoming themselves by helping listeners make something.
