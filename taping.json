@@ -1,11 +1,69 @@
 {
   "$comment": "Producer-owned (CODEOWNERS). Changing this changes what every future taping does; each dailies MANIFEST records a hash of it.",
-  "characters": ["borges", "leonardo", "agnolo"],
+  "characters": [
+    "borges",
+    "leonardo",
+    "agnolo"
+  ],
   "characters_note": "Placeholder cast (Future Radio's, CC0). Replace with your own; each needs a seed pin before a real run.",
-  "compression": { "depth": "canon+transcripts", "usePrivateMotivations": false },
-  "rehearsal": { "takesPerCharacter": 3, "ideasPerTake": 4, "model": "default", "budgetUsd": 4 },
-  "pool": { "dedupe": true, "maxIdeas": 12 },
-  "take": { "turnLimit": 14, "stoppingRule": "scene card" },
-  "vote": { "ballot": "ranked", "blind": true, "selfVote": false, "tiebreak": "producer", "advisory": true },
-  "run": { "allowEmpty": false, "llm": "stub" }
+  "compression": {
+    "depth": "canon+transcripts",
+    "usePrivateMotivations": false
+  },
+  "rehearsal": {
+    "takesPerCharacter": 3,
+    "ideasPerTake": 4,
+    "model": "default",
+    "budgetUsd": 4
+  },
+  "pool": {
+    "dedupe": true,
+    "maxIdeas": 12,
+    "lenses": [
+      "reversal",
+      "escalation",
+      "silence",
+      "object",
+      "callback",
+      "confession",
+      "time-skip",
+      "interruption"
+    ]
+  },
+  "take": {
+    "turnLimit": 14,
+    "stoppingRule": "scene card"
+  },
+  "vote": {
+    "ballot": "ranked",
+    "blind": true,
+    "selfVote": false,
+    "tiebreak": "producer",
+    "advisory": true
+  },
+  "run": {
+    "allowEmpty": false,
+    "llm": "stub"
+  },
+  "prompt": {
+    "maxInputs": 30,
+    "maxBodyChars": 2000,
+    "scene": "An open scene: the characters work out together what to do with today's material, each in their own voice."
+  },
+  "hermes": {
+    "bin": "hermes",
+    "provider": "openrouter",
+    "model": "anthropic/claude-sonnet-5.5",
+    "toolsets": [
+      "todo"
+    ],
+    "allowedTools": [
+      "todo"
+    ],
+    "maxTurns": 3,
+    "timeoutSeconds": 180,
+    "maxCalls": 60,
+    "apiKeyEnv": "OPENROUTER_API_KEY"
+  },
+  "hermes_note": "toolsets/allowedTools: Hermes documents no tools-off mode, so characters get the near-inert `todo` toolset and any other tool_use aborts the run. Verify with the canary workflow before setting run.llm to hermes. budgetUsd is not enforced in hermes mode (no cost in stream-json); maxCalls is."
 }

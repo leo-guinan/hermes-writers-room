@@ -1,37 +1,28 @@
 #!/usr/bin/env node
 // Run one taping and write dailies/<runId>/.
 //
-//   node scripts/window.mjs --date 2026-10-30 > /tmp/window.json
-//   node scripts/run-taping.mjs --window /tmp/window.json
+//   node scripts/window.mjs --date 2026-10-30 > window.json
+//   node scripts/run-taping.mjs --window window.json [--llm stub|hermes]
 //
-// STUB MODE. The structure, ids, hashing, diffs and rules here are the real thing; the text is
-// deterministic placeholder output (no model is called) so the whole pipeline, workflows and
-// presentation layer can be built and tested before Hermes is wired in. Replace `llm` below
-// with the Hermes-backed implementation; nothing else in this file needs to change.
+// The model sits behind one interface (scripts/lib/llm-stub.mjs documents it). With the stub, the
+// structure, ids, hashing, diffs and rules are real and the text is deterministic placeholder.
+// With Hermes, each character is a fresh Hermes profile and every reply is validated here before
+// it can affect anything: a bad move, ballot or turn is dropped and recorded, never trusted.
 //
 // Phases: compression -> rehearsals -> pool -> take -> votes -> diffs -> index -> MANIFEST.
-// MANIFEST.json is written LAST and lists every file with its sha256: a directory without
-// one is an incomplete run. A finished run is never overwritten (a fix is a new --suffix run).
+// MANIFEST.json is written LAST and lists every file with its sha256: a directory without one is
+// an incomplete run. A finished run is never overwritten (a fix is a new --suffix run).
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve as resolvePath } from "node:path";
 import { show, sha256 } from "./lib/git.mjs";
 import { parseInput } from "./lib/inputs.mjs";
+import { cap } from "./lib/prompts.mjs";
+import { createStubLlm } from "./lib/llm-stub.mjs";
 
-const LENSES = ["reversal", "escalation", "silence", "object", "callback", "confession", "time-skip", "interruption"];
+export const DEFAULT_LENSES = ["reversal", "escalation", "silence", "object", "callback", "confession", "time-skip", "interruption"];
+export const DEFAULT_SCENE = "An open scene: the characters work out together what to do with today's material, each in their own voice.";
 const h = (...parts) => sha256(parts.join("\u0000"));
-const num = (hex) => parseInt(hex.slice(0, 8), 16);
-const pick = (arr, ...parts) => arr[num(h(...parts)) % arr.length];
-const cap = (s) => s[0].toUpperCase() + s.slice(1);
-
-// ---- the model seam ------------------------------------------------------------------------
-// Each call gets what a real model call would get and returns text. Stub = deterministic.
-export const stubLlm = {
-  mode: "stub",
-  compress: ({ by, of }) => `[stub] What ${cap(by)} believes about ${cap(of)}, compressed from public canon and past transcripts only. A real run replaces this paragraph with a lossy model of ${cap(of)} that ${cap(by)} can simulate in rehearsal.`,
-  move: ({ character, input, lens }) => `${cap(character)} tries a ${lens} approach to "${input.data.title}".`,
-  line: ({ speaker, ideas }) => `[stub line] ${cap(speaker)} plays: ${ideas.map((i) => `${i.lens} on "${i.title}"`).join("; ")}.`,
-};
 
 function parseArgs(argv) {
   const a = {};
@@ -39,7 +30,21 @@ function parseArgs(argv) {
   return a;
 }
 
-export function runTaping({ repo, window, outRoot = "dailies", config, llm = stubLlm }) {
+/** Persona, canon and show bible from seeds/. A real (non-stub) run needs every character's persona. */
+export function loadSeeds(repo, chars, required) {
+  const dir = join(repo, "seeds");
+  const read = (p) => (existsSync(p) ? readFileSync(p, "utf8") : null);
+  const showBible = read(join(dir, "SHOW_BIBLE.md")) ?? "";
+  const seeds = {};
+  for (const c of chars) {
+    const persona = read(join(dir, c, "CHARACTER.md"));
+    if (persona === null && required) throw new Error(`seeds/${c}/CHARACTER.md is missing; a real run needs a seed for every character`);
+    seeds[c] = { persona: persona ?? "", canon: read(join(dir, c, "CANON.md")) ?? "" };
+  }
+  return { showBible, seeds };
+}
+
+export async function runTaping({ repo, window, outRoot = "dailies", config, llm = createStubLlm() }) {
   const runDir = join(repo, outRoot, window.runId);
   if (existsSync(runDir)) throw new Error(`${outRoot}/${window.runId} already exists. Dailies are immutable; use a new suffix for a fix.`);
   const written = [];
@@ -52,8 +57,14 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
   };
 
   const chars = config.characters;
+  const lenses = config.pool.lenses ?? DEFAULT_LENSES;
+  const scene = config.prompt?.scene ?? DEFAULT_SCENE;
+  const maxInputs = config.prompt?.maxInputs ?? 30;
+  const maxBodyChars = config.prompt?.maxBodyChars ?? 2000;
   const cfgHash = sha256(JSON.stringify(config));
   const seed = h(window.inputsHash, cfgHash);
+  const { showBible, seeds } = loadSeeds(repo, chars, llm.mode !== "stub");
+  const quality = { dropped_moves: [], invalid_ballots: [], turns_without_declared_uses: [] };
 
   // ---- inputs: read at the cutoff commit, never from the working tree ----------------------
   const inputs = [];
@@ -70,6 +81,9 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
   for (const i of inputs) emit(`inputs/${i.id}.md`, `# ${i.data.title}\n\n_${i.data.kind} · ${i.path} · reuse: ${i.data.reuse} · via ${i.data.provenance.via} (${i.data.provenance.submitted_by})_\n\n${i.body.trim()}\n`);
 
   const creative = inputs.filter((i) => i.data.kind !== "reaction");
+  const promptInputs = creative.slice(0, maxInputs).map((i) => ({ id: i.id, kind: i.data.kind, title: i.data.title, body: i.body }));
+  const promptLimits = { max_inputs: maxInputs, max_body_chars: maxBodyChars, inputs_omitted: creative.length - promptInputs.length, bodies_truncated: promptInputs.filter((i) => i.body.trim().length > maxBodyChars).length };
+  const byInput = new Map(promptInputs.map((i) => [i.id, i]));
   const reactions = inputs.filter((i) => i.data.kind === "reaction").map((i) => ({ input: i.id, ...i.data.reaction }));
   const reactedWith = (...actions) => new Set(reactions.filter((r) => actions.includes(r.action) && r.target.startsWith("P-")).map((r) => r.target));
   const picked = reactedWith("pick", "remix");
@@ -83,27 +97,37 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
   const prevPool = prevId ? JSON.parse(readFileSync(join(root, prevId, "pool.json"), "utf8")) : null;
 
   // ---- 1. compression: every ordered pair, public canon only -------------------------------
+  const compressions = Object.fromEntries(chars.map((c) => [c, {}]));
   for (const by of chars) for (const of of chars) {
     if (by === of) continue;
-    emit(`compression/${by}__of__${of}.md`, `# ${cap(by)}'s compression of ${cap(of)}\n\nusesPrivateMotivation: ${config.compression.usePrivateMotivations}\ndepth: ${config.compression.depth}\n\n${llm.compress({ by, of })}\n`);
+    const text = String(await llm.compress({ by, of, persona: seeds[of].persona, canon: seeds[of].canon })).trim();
+    compressions[by][of] = text;
+    emit(`compression/${by}__of__${of}.md`, `# ${cap(by)}'s compression of ${cap(of)}\n\nusesPrivateMotivation: ${config.compression.usePrivateMotivations}\ndepth: ${config.compression.depth}\n\n${text}\n`);
   }
 
-  // ---- 2. rehearsals: N takes x K moves per character --------------------------------------
+  // ---- 2. rehearsals: N takes x K moves per character, every move validated ----------------
   const moves = [];
   const { takesPerCharacter: N, ideasPerTake: K } = config.rehearsal;
   for (const character of chars) for (let t = 1; t <= N; t++) {
+    const raw = promptInputs.length
+      ? await llm.rehearse({ character, take: t, k: K, inputs: promptInputs, compressions: compressions[character], lenses, scene, maxBodyChars, seed })
+      : [];
     const takeMoves = [];
-    for (let k = 1; k <= K && creative.length; k++) {
-      const input = pick(creative, seed, character, t, k, "input");
-      const lens = pick(LENSES, seed, character, t, k, "lens");
+    for (const m of (Array.isArray(raw) ? raw : []).slice(0, K)) {
+      const input = byInput.get(m?.input_id);
+      const lens = String(m?.lens ?? "").trim().toLowerCase();
+      const text = String(m?.text ?? "").trim().slice(0, 600);
+      const reason = !input ? "input_id is not one of today's inputs" : !lenses.includes(lens) ? "lens is not in the vocabulary" : !text ? "empty text" : null;
+      if (reason) { quality.dropped_moves.push({ character, take: `T-${character}-${t}`, reason, move: m ?? null }); continue; }
       takeMoves.push({
-        id: `M-${character}-${t}-${k}`, character, take: `T-${character}-${t}`, pool_id: `P-${h(input.id, lens).slice(0, 8)}`,
-        input_id: input.id, input_title: input.data.title, lens, text: llm.move({ character, input, lens }),
+        id: `M-${character}-${t}-${takeMoves.length + 1}`, character, take: `T-${character}-${t}`, pool_id: `P-${h(input.id, lens).slice(0, 8)}`,
+        input_id: input.id, input_title: input.title, lens, text,
       });
     }
     moves.push(...takeMoves);
-    emit(`rehearsals/${character}/take-${String(t).padStart(2, "0")}.md`, `# ${cap(character)} · rehearsal take ${t}\n\n_Simulating the others from compression. Stub text._\n\n${takeMoves.map((m) => `- **${m.id}** → ${m.pool_id}: ${m.text}`).join("\n") || "_No inputs to work with._"}\n`);
-    emit(`rehearsals/${character}/take-${String(t).padStart(2, "0")}.json`, { take: `T-${character}-${t}`, character, moves: takeMoves });
+    const n2 = String(t).padStart(2, "0");
+    emit(`rehearsals/${character}/take-${n2}.md`, `# ${cap(character)} · rehearsal take ${t}\n\n_Simulating the others from compression._\n\n${takeMoves.map((m) => `- **${m.id}** → ${m.pool_id} (${m.lens}): ${m.text}`).join("\n") || "_No usable moves._"}\n`);
+    emit(`rehearsals/${character}/take-${n2}.json`, { take: `T-${character}-${t}`, character, moves: takeMoves });
   }
 
   // ---- 3. pool: dedupe, carry forward picks, drop rejects, cap -----------------------------
@@ -127,30 +151,49 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
   const turnLimit = config.take.turnLimit;
   for (let n = 0; n < turnLimit && poolIdeas.length; n++) {
     const speaker = chars[n % chars.length];
-    const used = [...new Set([poolIdeas[(n * 2) % poolIdeas.length], poolIdeas[(n * 2 + 1) % poolIdeas.length]])];
-    turns.push({ turn: n + 1, speaker, uses: used.map((u) => u.id), line: llm.line({ speaker, ideas: used }) });
+    const offered = [...new Set([poolIdeas[(n * 2) % poolIdeas.length], poolIdeas[(n * 2 + 1) % poolIdeas.length]])];
+    const r = await llm.turn({ speaker, n: n + 1, total: turnLimit, ideas: offered, transcript: turns.map((t) => ({ speaker: t.speaker, line: t.line })), scene });
+    const offeredIds = offered.map((o) => o.id);
+    const declared = (r.declared ?? []).filter((id) => offeredIds.includes(id));
+    if (!declared.length) quality.turns_without_declared_uses.push(n + 1);
+    turns.push({ turn: n + 1, speaker, offered: offeredIds, uses: declared.length ? declared : offeredIds, uses_declared: declared.length > 0, line: String(r.line || "[empty reply]").trim() });
   }
   emit("take/turns.jsonl", turns.map((t) => JSON.stringify(t)).join("\n") + (turns.length ? "\n" : ""));
-  emit("take/transcript.md", `# The take · ${window.runId}\n\n_All pooled ideas, one scene. Stub text._\n\n${turns.map((t) => `**${cap(t.speaker)}** (turn ${t.turn}; ideas ${t.uses.join(", ")}): ${t.line}`).join("\n\n") || "_No ideas in the pool._"}\n`);
+  emit("take/transcript.md", `# The take · ${window.runId}\n\n_All pooled ideas, one scene._\n\n${turns.map((t) => `**${cap(t.speaker)}** (turn ${t.turn}; ideas ${t.uses.join(", ")}): ${t.line}`).join("\n\n") || "_No ideas in the pool._"}\n`);
 
-  // ---- 5. votes: ranked, blind labels, no self-voting, advisory ----------------------------
+  // ---- 5. votes: ranked, blind labels, no self-voting, advisory, validated -----------------
+  const poolById = new Map(poolIdeas.map((i) => [i.id, i]));
   const takeIds = [...chars.flatMap((c) => Array.from({ length: N }, (_, i) => ({ id: `T-${c}-${i + 1}`, author: c }))), { id: "T-final", author: null }];
-  const ballots = chars.map((voter) => {
+  const takeSummary = (id) => id === "T-final"
+    ? turns.slice(0, 6).map((t) => `${cap(t.speaker)}: ${t.line}`).join(" ").slice(0, 500) || "(empty)"
+    : moves.filter((m) => m.take === id).map((m) => m.text).join(" / ").slice(0, 400) || "(no usable moves)";
+  const labelKey = (voter, id) => h(seed, voter, "label", id);
+  const labelsFor = (voter, list) => Object.fromEntries([...list].sort((a, b) => labelKey(voter, a.id).localeCompare(labelKey(voter, b.id))).map((x, i) => [String.fromCharCode(65 + (i % 26)) + (i >= 26 ? Math.floor(i / 26) : ""), x.id]));
+  const sameSet = (a, b) => a.length === b.length && new Set(a).size === a.length && [...a].sort().join() === [...b].sort().join();
+  const ballots = [];
+  for (const voter of chars) {
     const ideas = poolIdeas.filter((i) => config.vote.selfVote || !i.characters.includes(voter));
     const takes = takeIds.filter((t) => config.vote.selfVote || t.author !== voter);
-    const order = (list, key) => [...list].sort((a, b) => h(seed, voter, key, a.id).localeCompare(h(seed, voter, key, b.id)));
-    const ri = order(ideas, "idea"), rt = order(takes, "take");
-    const labels = (list) => Object.fromEntries(order(list, "label").map((x, i) => [String.fromCharCode(65 + (i % 26)) + (i >= 26 ? Math.floor(i / 26) : ""), x.id]));
-    return { voter, blind_labels: { ideas: labels(ideas), takes: labels(takes) }, ideas: ri.map((x) => x.id), takes: rt.map((x) => x.id) };
-  });
+    const blind_labels = { ideas: labelsFor(voter, ideas), takes: labelsFor(voter, takes) };
+    const ideaCards = Object.entries(blind_labels.ideas).map(([label, id]) => ({ label, text: `${poolById.get(id).text}` }));
+    const takeCards = Object.entries(blind_labels.takes).map(([label, id]) => ({ label, summary: takeSummary(id) }));
+    const resp = await llm.vote({ voter, ideaCards, takeCards, seed });
+    if (resp && sameSet(resp.ideas, Object.keys(blind_labels.ideas)) && sameSet(resp.takes, Object.keys(blind_labels.takes))) {
+      ballots.push({ voter, blind_labels, ideas: resp.ideas.map((l) => blind_labels.ideas[l]), takes: resp.takes.map((l) => blind_labels.takes[l]) });
+    } else {
+      quality.invalid_ballots.push({ voter, reason: resp ? "labels were not each used exactly once" : "no usable ballot returned" });
+      ballots.push({ voter, blind_labels, invalid: true });
+    }
+  }
+  const counted = ballots.filter((b) => !b.invalid);
   const borda = (field) => {
     const pts = {};
-    for (const b of ballots) b[field].forEach((id, pos) => { pts[id] = (pts[id] ?? 0) + (b[field].length - 1 - pos); });
+    for (const b of counted) b[field].forEach((id, pos) => { pts[id] = (pts[id] ?? 0) + (b[field].length - 1 - pos); });
     const rows = Object.entries(pts).map(([id, points]) => ({ id, points })).sort((a, b) => b.points - a.points || a.id.localeCompare(b.id));
     return rows.map((r, i) => ({ ...r, tie: rows.some((o, j) => j !== i && o.points === r.points) }));
   };
   emit("votes/ballots.json", { advisory: config.vote.advisory, blind: config.vote.blind, self_vote: config.vote.selfVote, ballots });
-  emit("votes/tally.json", { advisory: config.vote.advisory, method: "borda", tiebreak: config.vote.tiebreak, ideas: borda("ideas"), takes: borda("takes") });
+  emit("votes/tally.json", { advisory: config.vote.advisory, method: "borda", tiebreak: config.vote.tiebreak, ballots_counted: counted.length, ballots_invalid: ballots.length - counted.length, ideas: borda("ideas"), takes: borda("takes") });
 
   // ---- 6. diffs: everything a presentation layer needs to show differences -----------------
   const ids = new Set(poolIdeas.map((i) => i.id));
@@ -170,16 +213,19 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
   });
   const rank = (b, id) => b.ideas.indexOf(id);
   emit("diffs/vote-splits.json", poolIdeas.map((i) => {
-    const positions = Object.fromEntries(ballots.filter((b) => rank(b, i.id) >= 0).map((b) => [b.voter, rank(b, i.id) / Math.max(1, b.ideas.length - 1)]));
+    const positions = Object.fromEntries(counted.filter((b) => rank(b, i.id) >= 0).map((b) => [b.voter, rank(b, i.id) / Math.max(1, b.ideas.length - 1)]));
     const v = Object.values(positions);
     return { id: i.id, positions, spread: v.length ? Math.max(...v) - Math.min(...v) : 0 };
   }).sort((a, b) => b.spread - a.spread || a.id.localeCompare(b.id)));
   emit("diffs/rehearsal-to-take.json", poolIdeas.map((i) => ({ id: i.id, origins: i.origins, used_in_turns: turns.filter((t) => t.uses.includes(i.id)).map((t) => t.turn) })));
   emit("diffs/compression-error.json", { status: "not-computed", note: "Needs real compressions and real takes: predicted vs actual behaviour per ordered pair." });
   emit("diffs/voice-drift.json", { status: "not-computed", note: "Needs real lines compared against each character's pinned seed." });
+  const stats = llm.stats();
+  emit("diffs/quality.json", { ...quality, llm_failures: stats.failures, note: "Everything a model returned that was dropped, rejected or missing. Nothing here was used." });
 
   // ---- 7. index, then the manifest (last) --------------------------------------------------
-  emit("INDEX.md", `# Dailies · ${window.runId}\n\n> STUB RUN: structure is real, text is placeholder.\n\n- Window: ${window.fromTag ?? "start of history"} → \`${window.cutoff_sha.slice(0, 10)}\` (${inputs.length} inputs${skippedInputs.length ? `, ${skippedInputs.length} skipped` : ""})\n- Characters: ${chars.map(cap).join(", ")}\n- Rehearsal takes: ${chars.length * N} · moves: ${moves.length} · pool ideas: ${poolIdeas.length}${prevId ? ` · previous run: ${prevId}` : ""}\n- Votes are advisory; ties go to the producer.\n\n## Read\n- [take/transcript.md](take/transcript.md)\n- [votes/tally.json](votes/tally.json)\n- [pool.json](pool.json)\n- diffs/: vs-previous, convergence, vote-splits, rehearsal-to-take\n`);
+  const problems = quality.dropped_moves.length + quality.invalid_ballots.length + stats.failures.length;
+  emit("INDEX.md", `# Dailies · ${window.runId}\n\n${llm.mode === "stub" ? "> STUB RUN: structure is real, text is placeholder.\n\n" : ""}- Window: ${window.fromTag ?? "start of history"} → \`${window.cutoff_sha.slice(0, 10)}\` (${inputs.length} inputs${skippedInputs.length ? `, ${skippedInputs.length} skipped` : ""})\n- Characters: ${chars.map(cap).join(", ")}\n- Rehearsal takes: ${chars.length * N} · moves: ${moves.length} · pool ideas: ${poolIdeas.length}${prevId ? ` · previous run: ${prevId}` : ""}\n- Model: ${llm.mode} · calls: ${stats.calls}${problems ? ` · **${problems} problems recorded** (diffs/quality.json)` : ""}\n- Votes are advisory; ties go to the producer.\n\n## Read\n- [take/transcript.md](take/transcript.md)\n- [votes/tally.json](votes/tally.json)\n- [pool.json](pool.json)\n- diffs/: vs-previous, convergence, vote-splits, rehearsal-to-take, quality\n`);
   const manifest = {
     schema: "dailies/1",
     run: window.runId,
@@ -188,29 +234,44 @@ export function runTaping({ repo, window, outRoot = "dailies", config, llm = stu
     window: { from: window.from, from_tag: window.fromTag, cutoff_sha: window.cutoff_sha, inputs_hash: window.inputsHash, input_count: inputs.length, skipped_inputs: skippedInputs },
     config_sha256: cfgHash,
     characters: chars,
-    llm: { mode: llm.mode },
-    seeds: llm.mode === "stub" ? "none (stub run)" : "see seeds/",
-    cost: llm.mode === "stub" ? { status: "stub", usd: 0 } : { status: "unknown", usd: null },
-    counts: { rehearsal_takes: chars.length * N, moves: moves.length, pool_ideas: poolIdeas.length, turns: turns.length },
+    llm: stats,
+    seeds: Object.fromEntries([["show_bible", sha256(showBible)], ...chars.map((c) => [c, { persona_sha256: sha256(seeds[c].persona), canon_sha256: sha256(seeds[c].canon) }])]),
+    prompt_limits: promptLimits,
+    cost: llm.mode === "stub" ? { status: "stub", usd: 0 } : { status: "unknown", usd: null, note: "Hermes stream-json reports no cost; the binding limit is the call cap." },
+    counts: { rehearsal_takes: chars.length * N, moves: moves.length, pool_ideas: poolIdeas.length, turns: turns.length, problems },
     files: written.sort((a, b) => a.path.localeCompare(b.path)),
   };
-  const mp = join(runDir, "MANIFEST.json");
-  writeFileSync(mp, JSON.stringify(manifest, null, 2) + "\n");
+  writeFileSync(join(runDir, "MANIFEST.json"), JSON.stringify(manifest, null, 2) + "\n");
   return { runDir, manifest };
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+async function main() {
   const a = parseArgs(process.argv.slice(2));
-  if (!a.window) { console.error("usage: run-taping.mjs --window <window.json> [--repo .] [--config taping.json]"); process.exit(2); }
+  if (!a.window) { console.error("usage: run-taping.mjs --window <window.json> [--repo .] [--config taping.json] [--llm stub|hermes]"); process.exit(2); }
   const repo = resolvePath(a.repo ?? ".");
   const window = JSON.parse(readFileSync(resolvePath(a.window), "utf8"));
   if (window.skip) { console.error(`skipped: ${window.skip}`); process.exit(3); }
   const config = JSON.parse(readFileSync(resolvePath(a.config ?? join(repo, "taping.json")), "utf8"));
+  const mode = a.llm ?? config.run?.llm ?? "stub";
   try {
-    const { manifest } = runTaping({ repo, window, config });
-    console.log(`wrote dailies/${manifest.run}: ${manifest.files.length} files, ${manifest.counts.pool_ideas} pool ideas`);
+    let llm = createStubLlm();
+    if (mode === "hermes") {
+      const { createHermesLlm } = await import("./lib/llm-hermes.mjs");
+      const { setupProfiles } = await import("./lib/hermes-profiles.mjs");
+      const hc = config.hermes;
+      const key = hc.apiKeyEnv ? process.env[hc.apiKeyEnv] : undefined;
+      if (hc.apiKeyEnv && !key) throw new Error(`${hc.apiKeyEnv} is not set; the Hermes run needs it (add it as a repository secret)`);
+      const env = key ? { [hc.apiKeyEnv]: key } : {};
+      const { showBible, seeds } = loadSeeds(repo, config.characters, true);
+      await setupProfiles({ chars: config.characters, runId: window.runId, showBible, seeds, bin: hc.bin, binArgs: hc.binArgs, env });
+      llm = createHermesLlm({ config, runId: window.runId, seeds, env, secrets: key ? [key] : [] });
+    } else if (mode !== "stub") throw new Error(`unknown llm mode '${mode}' (stub or hermes)`);
+    const { manifest } = await runTaping({ repo, window, config, llm });
+    console.log(`wrote dailies/${manifest.run}: ${manifest.files.length} files, ${manifest.counts.pool_ideas} pool ideas, ${manifest.counts.problems} problems (${manifest.llm.mode})`);
   } catch (e) {
     console.error(e.message);
     process.exit(1);
   }
 }
+
+if (import.meta.url === `file://${process.argv[1]}`) await main();

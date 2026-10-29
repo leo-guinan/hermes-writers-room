@@ -10,10 +10,10 @@ import { commit, g, input, makeRepo, write } from "./helpers.mjs";
 const CONFIG = JSON.parse(readFileSync(new URL("../taping.json", import.meta.url), "utf8"));
 const idea = (title, over = {}) => input({ title, ...over });
 
-function tape(repo, date, opts = {}) {
+async function tape(repo, date, opts = {}) {
   const window = computeWindow({ repo, date, ...opts });
   assert.equal(window.skip, null, window.skip);
-  const out = runTaping({ repo, window, config: CONFIG });
+  const out = await runTaping({ repo, window, config: CONFIG });
   commit(repo, `dailies ${window.runId}`);
   g(repo, "tag", `dailies-${window.runId}`);
   return { window, ...out };
@@ -28,13 +28,13 @@ function seeded() {
   return repo;
 }
 
-test("first window covers all inputs; skip when run exists; empty window is skipped", () => {
+test("first window covers all inputs; skip when run exists; empty window is skipped", async () => {
   const repo = seeded();
   const w = computeWindow({ repo, date: "2026-10-30" });
   assert.equal(w.files.length, 3);
   assert.equal(w.from, null);
   assert.equal(w.skip, null);
-  tape(repo, "2026-10-30");
+  await tape(repo, "2026-10-30");
   const again = computeWindow({ repo, date: "2026-10-30" });
   assert.match(again.skip, /already exists/);
   const next = computeWindow({ repo, date: "2026-10-31" });
@@ -42,9 +42,9 @@ test("first window covers all inputs; skip when run exists; empty window is skip
   assert.equal(computeWindow({ repo, date: "2026-10-31", allowEmpty: true }).skip, null);
 });
 
-test("the next window contains only inputs merged after the last tag", () => {
+test("the next window contains only inputs merged after the last tag", async () => {
   const repo = seeded();
-  tape(repo, "2026-10-30");
+  await tape(repo, "2026-10-30");
   write(repo, "inputs/2026-10-31/the-stage.md", idea("A stage with no audience yet"));
   commit(repo, "inputs day 2");
   const w = computeWindow({ repo, date: "2026-10-31" });
@@ -53,7 +53,7 @@ test("the next window contains only inputs merged after the last tag", () => {
   assert.equal(w.skip, null);
 });
 
-test("the window is fixed by cutoff sha, not by what arrives later", () => {
+test("the window is fixed by cutoff sha, not by what arrives later", async () => {
   const repo = seeded();
   const cutoff = g(repo, "rev-parse", "HEAD");
   write(repo, "inputs/2026-10-30/late-comer.md", idea("Arrived after the cutoff"));
@@ -63,14 +63,14 @@ test("the window is fixed by cutoff sha, not by what arrives later", () => {
   assert.equal(w.cutoff_sha, cutoff);
 });
 
-test("window is stable: same inputs, same hash", () => {
+test("window is stable: same inputs, same hash", async () => {
   const repo = seeded();
   assert.equal(computeWindow({ repo, date: "2026-10-30" }).inputsHash, computeWindow({ repo, date: "2026-10-30" }).inputsHash);
 });
 
-test("a taping writes the full dailies layout, MANIFEST last and complete", () => {
+test("a taping writes the full dailies layout, MANIFEST last and complete", async () => {
   const repo = seeded();
-  const { runDir, manifest } = tape(repo, "2026-10-30");
+  const { runDir, manifest } = await tape(repo, "2026-10-30");
   for (const p of ["INDEX.md", "MANIFEST.json", "pool.json", "inputs/index.json", "take/transcript.md", "take/turns.jsonl", "votes/ballots.json", "votes/tally.json",
     "diffs/vs-previous.json", "diffs/convergence.json", "diffs/vote-splits.json", "diffs/rehearsal-to-take.json", "diffs/compression-error.json", "diffs/voice-drift.json",
     "compression/borges__of__leonardo.md", "rehearsals/agnolo/take-03.md", "rehearsals/agnolo/take-03.json"]) {
@@ -84,15 +84,15 @@ test("a taping writes the full dailies layout, MANIFEST last and complete", () =
   assert.equal(manifest.cost.status, "stub");
 });
 
-test("compression never uses private motivations", () => {
+test("compression never uses private motivations", async () => {
   const repo = seeded();
-  const { runDir } = tape(repo, "2026-10-30");
+  const { runDir } = await tape(repo, "2026-10-30");
   assert.match(readFileSync(join(runDir, "compression/borges__of__leonardo.md"), "utf8"), /usesPrivateMotivation: false/);
 });
 
-test("no self-voting: nobody ranks an idea they originated or their own takes", () => {
+test("no self-voting: nobody ranks an idea they originated or their own takes", async () => {
   const repo = seeded();
-  const { runDir } = tape(repo, "2026-10-30");
+  const { runDir } = await tape(repo, "2026-10-30");
   const pool = JSON.parse(readFileSync(join(runDir, "pool.json"), "utf8")).ideas;
   const { ballots } = JSON.parse(readFileSync(join(runDir, "votes/ballots.json"), "utf8"));
   for (const b of ballots) {
@@ -102,9 +102,9 @@ test("no self-voting: nobody ranks an idea they originated or their own takes", 
   }
 });
 
-test("every turn cites pool ideas, and the cited ids exist", () => {
+test("every turn cites pool ideas, and the cited ids exist", async () => {
   const repo = seeded();
-  const { runDir } = tape(repo, "2026-10-30");
+  const { runDir } = await tape(repo, "2026-10-30");
   const ids = new Set(JSON.parse(readFileSync(join(runDir, "pool.json"), "utf8")).ideas.map((i) => i.id));
   const turns = readFileSync(join(runDir, "take/turns.jsonl"), "utf8").trim().split("\n").map((l) => JSON.parse(l));
   assert.equal(turns.length, CONFIG.take.turnLimit);
@@ -112,28 +112,28 @@ test("every turn cites pool ideas, and the cited ids exist", () => {
 });
 
 test("deterministic: same inputs and config give identical output, except the cutoff sha INDEX.md records", async () => {
-  const a = tape(seeded(), "2026-10-30").manifest;
+  const a = (await tape(seeded(), "2026-10-30")).manifest;
   await new Promise((r) => setTimeout(r, 1100)); // different commit time => different cutoff sha
-  const b = tape(seeded(), "2026-10-30").manifest;
+  const b = (await tape(seeded(), "2026-10-30")).manifest;
   assert.equal(a.window.inputs_hash, b.window.inputs_hash);
   assert.notEqual(a.window.cutoff_sha, b.window.cutoff_sha);
   const strip = (m) => m.files.filter((f) => !f.path.endsWith("/INDEX.md")).map((f) => [f.path, f.sha256]);
   assert.deepEqual(strip(a), strip(b));
 });
 
-test("dailies are immutable: a second run of the same id throws, a suffix run works", () => {
+test("dailies are immutable: a second run of the same id throws, a suffix run works", async () => {
   const repo = seeded();
-  const { window } = tape(repo, "2026-10-30");
-  assert.throws(() => runTaping({ repo, window, config: CONFIG }), /immutable/);
+  const { window } = await tape(repo, "2026-10-30");
+  await assert.rejects(() => runTaping({ repo, window, config: CONFIG }), /immutable/);
   const fix = computeWindow({ repo, date: "2026-10-30", suffix: "r2", allowEmpty: true });
   assert.equal(fix.runId, "2026-10-30-r2");
-  runTaping({ repo, window: fix, config: CONFIG });
+  await runTaping({ repo, window: fix, config: CONFIG });
   assert.ok(readdirSync(join(repo, "dailies")).includes("2026-10-30-r2"));
 });
 
-test("day two diffs against day one; reactions carry forward picks and drop rejects", () => {
+test("day two diffs against day one; reactions carry forward picks and drop rejects", async () => {
   const repo = seeded();
-  const day1 = tape(repo, "2026-10-30");
+  const day1 = await tape(repo, "2026-10-30");
   const pool1 = JSON.parse(readFileSync(join(day1.runDir, "pool.json"), "utf8")).ideas;
   assert.ok(pool1.length >= 2, "need at least two pool ideas for this test");
   const [keep, drop] = [pool1[0].id, pool1[1].id];
@@ -141,7 +141,7 @@ test("day two diffs against day one; reactions carry forward picks and drop reje
   write(repo, "inputs/2026-10-31/drop-one.md", input({ kind: "reaction", source: undefined, title: "Cut this one", reaction: { action: "reject", target: drop, reason: "does not land" } }));
   write(repo, "inputs/2026-10-31/new-idea.md", idea("A stage with no audience yet"));
   commit(repo, "day 2 inputs");
-  const day2 = tape(repo, "2026-10-31");
+  const day2 = await tape(repo, "2026-10-31");
   const diff = JSON.parse(readFileSync(join(day2.runDir, "diffs/vs-previous.json"), "utf8"));
   assert.equal(diff.previous_run, "2026-10-30");
   assert.ok(diff.rejected_by_creatives.includes(drop) || !JSON.parse(readFileSync(join(day2.runDir, "pool.json"), "utf8")).ideas.some((i) => i.id === drop));
@@ -150,11 +150,11 @@ test("day two diffs against day one; reactions carry forward picks and drop reje
   assert.ok(pool2.ideas.some((i) => i.id === keep), "picked idea must carry forward");
 });
 
-test("an invalid file in the window is skipped and recorded, not fatal", () => {
+test("an invalid file in the window is skipped and recorded, not fatal", async () => {
   const repo = seeded();
   write(repo, "inputs/2026-10-30/broken-one.md", "not front matter at all");
   commit(repo, "broken slipped in");
-  const { manifest } = tape(repo, "2026-10-30");
+  const { manifest } = await tape(repo, "2026-10-30");
   assert.equal(manifest.window.skipped_inputs.length, 1);
   assert.equal(manifest.window.input_count, 3);
 });

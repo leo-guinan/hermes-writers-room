@@ -1,0 +1,36 @@
+name: hermes-canary
+
+# Run this by hand (Actions -> hermes-canary -> Run workflow) BEFORE setting run.llm to "hermes"
+# in taping.json. It installs Hermes, makes one tiny audited call with your model key, and prints
+# the real stream-json events so we can confirm the field names the pipeline assumes.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Hermes Agent
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libatomic1 git curl tar
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --non-interactive
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.hermes/bin" >> "$GITHUB_PATH"
+
+      - run: npm ci --ignore-scripts
+
+      - name: Canary
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node scripts/hermes-canary.mjs

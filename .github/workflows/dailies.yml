@@ -67,10 +67,25 @@ jobs:
         run: |
           echo "Skipping - $(node -p "require('./window.json').skip")"
 
-      # Stub LLM until the Hermes-backed one lands. When it does, model keys go here as
-      # secrets and must stay out of the agents' tool environment (see docs/DAILIES.md).
+      - name: Which LLM
+        id: llm
+        if: steps.window.outputs.skip == 'no'
+        run: echo "mode=$(node -p "require('./taping.json').run.llm")" >> "$GITHUB_OUTPUT"
+
+      - name: Install Hermes Agent
+        if: steps.window.outputs.skip == 'no' && steps.llm.outputs.mode == 'hermes'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libatomic1 git curl tar
+          curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --non-interactive
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.hermes/bin" >> "$GITHUB_PATH"
+
+      # The model key is given to this one step only. The pipeline passes it on to Hermes alone;
+      # the Hermes child process never sees GITHUB_TOKEN or any other runner variable.
       - name: Run the taping
         if: steps.window.outputs.skip == 'no'
+        env:
+          OPENROUTER_API_KEY: ${{ steps.llm.outputs.mode == 'hermes' && secrets.OPENROUTER_API_KEY || '' }}
         run: node scripts/run-taping.mjs --window window.json
 
       - name: Commit and tag

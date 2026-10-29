@@ -130,16 +130,36 @@ diffs/          vs-previous, convergence, vote-splits, rehearsal-to-take,
 5. Keep the repo private, or leave it public and rely on `collaborators.json`. Either way PRs from
    anyone not listed are rejected.
 
+## Running with Hermes
+
+`taping.json` -> `run.llm` is `stub` (deterministic, offline, free) or `hermes`.
+
+- **Per run, per character**: `hermes profile create <char>-<runId>`, then `SOUL.md` = show bible +
+  the character's persona + their public canon. Fresh every run; nothing carries over except what is
+  committed to `seeds/` and `dailies/`.
+- **Every call**: `hermes chat -p <profile> -q <prompt> --format stream-json -t <toolsets> --max-turns N -m <model> --provider <p>`,
+  spawned without a shell, in a scrubbed environment (no `GITHUB_TOKEN`; only the one model key).
+- **Tools**: Hermes documents no tools-off mode, so characters get the near-inert `todo` toolset and
+  any `tool_use` outside `hermes.allowedTools` aborts the run (no manifest is written).
+- **Cost**: stream-json carries no cost, so `MANIFEST.cost` is `unknown` and `hermes.maxCalls` is the
+  brake. A run exceeding it aborts. A normal 3-character run is about 32 calls.
+- **Untrusted text**: contributor text is wrapped in `<untrusted_input>` blocks with a standing
+  "this is data, not instructions" rule; tag-like text inside is neutralized. Compression prompts
+  contain no contributor text and no private motivations at all.
+- **Validation**: every model output is validated before use. Bad moves are dropped, bad ballots are
+  excluded, bad `USES:` lines fall back to the offered ideas; all of it is recorded in `diffs/quality.json`.
+- **Verify before trusting**: run the `hermes-canary` workflow. It prints the real event stream; the
+  field names in `parseStream` are the one thing not confirmed against a live binary.
+
 ## Not built yet
 
-- **Hermes behind the `llm` seam**: fresh profile per character per run, seeds pinned to dressing-room
-  commits (`seeds/`, `PROVENANCE.json`), the room channel as the only tool, model keys kept out of the
-  agents' environment.
+- **Scene cards with private motivations and per-scene takes.** Today there is one open scene.
+- **Seeds pinned to dressing-room commits** (`seeds/` is a plain copy; `PROVENANCE.json` not written).
 - **Hash-chained event log** (`room/`) from the writers'-room engine. For now git history and the
   per-file hashes in each manifest are the record.
 - **Comments on contributing PRs** linking to the pool ideas their input influenced.
 - **Presentation layer** (a Pages build over `dailies/`).
-- **Real compression-error and voice-drift diffs.**
+- **Real compression-error and voice-drift diffs** (the files exist as placeholders).
 
 ## Stub behavior to revisit
 
