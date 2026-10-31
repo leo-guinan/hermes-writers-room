@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-3",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-3-1",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-fc77cd35",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "time-skip",
+      "text": "Agnolo tries a time-skip approach to \"Identity arc experiment — legal counsel without clearance\"."
+    },
+    {
+      "id": "M-agnolo-3-2",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-f074be1b",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "object",
+      "text": "Agnolo tries a object approach to \"Quai Network Space acquisition receipt\"."
+    },
+    {
+      "id": "M-agnolo-3-3",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-84fcf563",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "object",
+      "text": "Agnolo tries a object approach to \"Identity arc experiment — legal counsel without clearance\"."
+    },
+    {
+      "id": "M-agnolo-3-4",
+      "character": "agnolo",
+      "take": "T-agnolo-3",
+      "pool_id": "P-a82f2900",
+      "input_id": "N-f86941a7",
+      "input_title": "Identity arc experiment — legal counsel without clearance",
+      "lens": "reversal",
+      "text": "Agnolo tries a reversal approach to \"Identity arc experiment — legal counsel without clearance\"."
+    }
+  ]
+}

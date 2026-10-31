@@ -1,0 +1,75 @@
+{
+  "converged": [
+    {
+      "id": "P-51ca299b",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-84fcf563",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-a82f2900",
+      "characters": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-7877785c",
+      "characters": [
+        "borges",
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-9b0f0115",
+      "characters": [
+        "borges",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-d54450f2",
+      "characters": [
+        "borges",
+        "leonardo"
+      ]
+    }
+  ],
+  "unique": [
+    {
+      "id": "P-08b95d25",
+      "character": "agnolo"
+    },
+    {
+      "id": "P-12dd42a6",
+      "character": "leonardo"
+    },
+    {
+      "id": "P-21badfde",
+      "character": "leonardo"
+    },
+    {
+      "id": "P-22f1dcc6",
+      "character": "leonardo"
+    },
+    {
+      "id": "P-24e3c551",
+      "character": "borges"
+    },
+    {
+      "id": "P-abf10de6",
+      "character": "agnolo"
+    }
+  ]
+}

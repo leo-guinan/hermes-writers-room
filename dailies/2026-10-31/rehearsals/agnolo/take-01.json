@@ -1,0 +1,46 @@
+{
+  "take": "T-agnolo-1",
+  "character": "agnolo",
+  "moves": [
+    {
+      "id": "M-agnolo-1-1",
+      "character": "agnolo",
+      "take": "T-agnolo-1",
+      "pool_id": "P-abf10de6",
+      "input_id": "N-1720dabc",
+      "input_title": "Quai Network Space acquisition receipt",
+      "lens": "escalation",
+      "text": "Agnolo tries a escalation approach to \"Quai Network Space acquisition receipt\"."
+    },
+    {
+      "id": "M-agnolo-1-2",
+      "character": "agnolo",
+      "take": "T-agnolo-1",
+      "pool_id": "P-b0e1b24c",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "silence",
+      "text": "Agnolo tries a silence approach to \"Douglas arrives as legal counsel\"."
+    },
+    {
+      "id": "M-agnolo-1-3",
+      "character": "agnolo",
+      "take": "T-agnolo-1",
+      "pool_id": "P-51ca299b",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "callback",
+      "text": "Agnolo tries a callback approach to \"Douglas arrives as legal counsel\"."
+    },
+    {
+      "id": "M-agnolo-1-4",
+      "character": "agnolo",
+      "take": "T-agnolo-1",
+      "pool_id": "P-e631ceeb",
+      "input_id": "N-7a51a1ae",
+      "input_title": "Douglas arrives as legal counsel",
+      "lens": "confession",
+      "text": "Agnolo tries a confession approach to \"Douglas arrives as legal counsel\"."
+    }
+  ]
+}

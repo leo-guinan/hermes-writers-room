@@ -1,0 +1,144 @@
+[
+  {
+    "id": "P-51ca299b",
+    "origins": [
+      "M-borges-1-2",
+      "M-borges-2-1",
+      "M-leonardo-2-4",
+      "M-leonardo-3-3",
+      "M-agnolo-1-3"
+    ],
+    "used_in_turns": [
+      1,
+      7,
+      13
+    ]
+  },
+  {
+    "id": "P-84fcf563",
+    "origins": [
+      "M-borges-2-2",
+      "M-leonardo-1-4",
+      "M-leonardo-2-2",
+      "M-agnolo-2-3",
+      "M-agnolo-3-3"
+    ],
+    "used_in_turns": [
+      1,
+      7,
+      13
+    ]
+  },
+  {
+    "id": "P-a82f2900",
+    "origins": [
+      "M-borges-2-3",
+      "M-leonardo-3-1",
+      "M-agnolo-3-4"
+    ],
+    "used_in_turns": [
+      2,
+      8,
+      14
+    ]
+  },
+  {
+    "id": "P-7877785c",
+    "origins": [
+      "M-borges-1-3",
+      "M-borges-1-4",
+      "M-borges-3-2",
+      "M-leonardo-2-1",
+      "M-leonardo-3-4"
+    ],
+    "used_in_turns": [
+      2,
+      8,
+      14
+    ]
+  },
+  {
+    "id": "P-9b0f0115",
+    "origins": [
+      "M-borges-1-1",
+      "M-agnolo-2-1"
+    ],
+    "used_in_turns": [
+      3,
+      9
+    ]
+  },
+  {
+    "id": "P-d54450f2",
+    "origins": [
+      "M-borges-3-3",
+      "M-leonardo-1-2"
+    ],
+    "used_in_turns": [
+      3,
+      9
+    ]
+  },
+  {
+    "id": "P-08b95d25",
+    "origins": [
+      "M-agnolo-2-2"
+    ],
+    "used_in_turns": [
+      4,
+      10
+    ]
+  },
+  {
+    "id": "P-12dd42a6",
+    "origins": [
+      "M-leonardo-1-1"
+    ],
+    "used_in_turns": [
+      4,
+      10
+    ]
+  },
+  {
+    "id": "P-21badfde",
+    "origins": [
+      "M-leonardo-1-3",
+      "M-leonardo-2-3"
+    ],
+    "used_in_turns": [
+      5,
+      11
+    ]
+  },
+  {
+    "id": "P-22f1dcc6",
+    "origins": [
+      "M-leonardo-3-2"
+    ],
+    "used_in_turns": [
+      5,
+      11
+    ]
+  },
+  {
+    "id": "P-24e3c551",
+    "origins": [
+      "M-borges-2-4",
+      "M-borges-3-4"
+    ],
+    "used_in_turns": [
+      6,
+      12
+    ]
+  },
+  {
+    "id": "P-abf10de6",
+    "origins": [
+      "M-agnolo-1-1"
+    ],
+    "used_in_turns": [
+      6,
+      12
+    ]
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "evaluator": "heuristic-v1",
+  "signals": [
+    "new evidence",
+    "new creative alternative",
+    "executed action",
+    "consequential disagreement",
+    "measurable result"
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "speaker": "borges",
+      "signals": [],
+      "duplicate": false,
+      "contributes": false
+    },
+    {
+      "turn": 2,
+      "speaker": "leonardo",
+      "signals": [
+        "new evidence",
+        "executed action",
+        "measurable result"
+      ],
+      "duplicate": false,
+      "contributes": true
+    },
+    {
+      "turn": 3,
+      "speaker": "agnolo",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": false,
+      "contributes": true
+    },
+    {
+      "turn": 4,
+      "speaker": "borges",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": false,
+      "contributes": true
+    },
+    {
+      "turn": 5,
+      "speaker": "leonardo",
+      "signals": [
+        "new evidence",
+        "executed action",
+        "measurable result"
+      ],
+      "duplicate": false,
+      "contributes": true
+    },
+    {
+      "turn": 6,
+      "speaker": "agnolo",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": false,
+      "contributes": true
+    },
+    {
+      "turn": 7,
+      "speaker": "borges",
+      "signals": [],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 8,
+      "speaker": "leonardo",
+      "signals": [
+        "new evidence",
+        "executed action",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 9,
+      "speaker": "agnolo",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 10,
+      "speaker": "borges",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 11,
+      "speaker": "leonardo",
+      "signals": [
+        "new evidence",
+        "executed action",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 12,
+      "speaker": "agnolo",
+      "signals": [
+        "new evidence",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 13,
+      "speaker": "borges",
+      "signals": [],
+      "duplicate": true,
+      "contributes": false
+    },
+    {
+      "turn": 14,
+      "speaker": "leonardo",
+      "signals": [
+        "new evidence",
+        "executed action",
+        "measurable result"
+      ],
+      "duplicate": true,
+      "contributes": false
+    }
+  ],
+  "stop_recommendation": 1,
+  "note": "Heuristic receipt only. It is not an independent semantic EVAL or a legal judgment. A future evaluator may replace it, but must preserve this receipt."
+}

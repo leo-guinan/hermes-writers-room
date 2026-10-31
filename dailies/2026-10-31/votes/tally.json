@@ -1,0 +1,178 @@
+{
+  "advisory": true,
+  "method": "borda",
+  "tiebreak": "producer",
+  "ballots_counted": 3,
+  "ballots_invalid": 0,
+  "ideas": [
+    {
+      "id": "P-9b0f0115",
+      "points": 21,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-12dd42a6",
+      "points": 16,
+      "tie": true,
+      "category": "unique",
+      "originators": [
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-d54450f2",
+      "points": 16,
+      "tie": true,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-a82f2900",
+      "points": 15,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-84fcf563",
+      "points": 14,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-51ca299b",
+      "points": 12,
+      "tie": false,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo",
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-24e3c551",
+      "points": 11,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "borges"
+      ]
+    },
+    {
+      "id": "P-7877785c",
+      "points": 8,
+      "tie": true,
+      "category": "converged",
+      "originators": [
+        "borges",
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-abf10de6",
+      "points": 8,
+      "tie": true,
+      "category": "unique",
+      "originators": [
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-08b95d25",
+      "points": 6,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "agnolo"
+      ]
+    },
+    {
+      "id": "P-21badfde",
+      "points": 5,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "leonardo"
+      ]
+    },
+    {
+      "id": "P-22f1dcc6",
+      "points": 4,
+      "tie": false,
+      "category": "unique",
+      "originators": [
+        "leonardo"
+      ]
+    }
+  ],
+  "takes": [
+    {
+      "id": "T-agnolo-3",
+      "points": 10,
+      "tie": true
+    },
+    {
+      "id": "T-final",
+      "points": 10,
+      "tie": true
+    },
+    {
+      "id": "T-agnolo-1",
+      "points": 8,
+      "tie": false
+    },
+    {
+      "id": "T-borges-1",
+      "points": 7,
+      "tie": false
+    },
+    {
+      "id": "T-borges-2",
+      "points": 6,
+      "tie": true
+    },
+    {
+      "id": "T-borges-3",
+      "points": 6,
+      "tie": true
+    },
+    {
+      "id": "T-agnolo-2",
+      "points": 5,
+      "tie": true
+    },
+    {
+      "id": "T-leonardo-1",
+      "points": 5,
+      "tie": true
+    },
+    {
+      "id": "T-leonardo-3",
+      "points": 4,
+      "tie": false
+    },
+    {
+      "id": "T-leonardo-2",
+      "points": 2,
+      "tie": false
+    }
+  ]
+}

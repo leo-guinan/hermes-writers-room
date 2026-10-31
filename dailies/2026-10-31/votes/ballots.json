@@ -1,0 +1,170 @@
+{
+  "advisory": true,
+  "blind": true,
+  "self_vote": false,
+  "converged_rankable": true,
+  "ballots": [
+    {
+      "voter": "borges",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-a82f2900",
+          "B": "P-84fcf563",
+          "C": "P-12dd42a6",
+          "D": "P-22f1dcc6",
+          "E": "P-08b95d25",
+          "F": "P-21badfde",
+          "G": "P-51ca299b",
+          "H": "P-7877785c",
+          "I": "P-d54450f2",
+          "J": "P-9b0f0115",
+          "K": "P-abf10de6"
+        },
+        "takes": {
+          "A": "T-leonardo-1",
+          "B": "T-leonardo-3",
+          "C": "T-agnolo-3",
+          "D": "T-final",
+          "E": "T-agnolo-1",
+          "F": "T-leonardo-2",
+          "G": "T-agnolo-2"
+        }
+      },
+      "ideas": [
+        "P-12dd42a6",
+        "P-d54450f2",
+        "P-abf10de6",
+        "P-a82f2900",
+        "P-9b0f0115",
+        "P-84fcf563",
+        "P-22f1dcc6",
+        "P-7877785c",
+        "P-51ca299b",
+        "P-21badfde",
+        "P-08b95d25"
+      ],
+      "takes": [
+        "T-agnolo-3",
+        "T-agnolo-1",
+        "T-agnolo-2",
+        "T-leonardo-1",
+        "T-leonardo-2",
+        "T-leonardo-3",
+        "T-final"
+      ],
+      "ranked_own_origin": [
+        "P-d54450f2",
+        "P-a82f2900",
+        "P-9b0f0115",
+        "P-84fcf563",
+        "P-7877785c",
+        "P-51ca299b"
+      ]
+    },
+    {
+      "voter": "leonardo",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-abf10de6",
+          "B": "P-7877785c",
+          "C": "P-a82f2900",
+          "D": "P-84fcf563",
+          "E": "P-24e3c551",
+          "F": "P-d54450f2",
+          "G": "P-51ca299b",
+          "H": "P-08b95d25",
+          "I": "P-9b0f0115"
+        },
+        "takes": {
+          "A": "T-agnolo-2",
+          "B": "T-agnolo-3",
+          "C": "T-final",
+          "D": "T-agnolo-1",
+          "E": "T-borges-1",
+          "F": "T-borges-3",
+          "G": "T-borges-2"
+        }
+      },
+      "ideas": [
+        "P-84fcf563",
+        "P-9b0f0115",
+        "P-08b95d25",
+        "P-a82f2900",
+        "P-24e3c551",
+        "P-7877785c",
+        "P-d54450f2",
+        "P-51ca299b",
+        "P-abf10de6"
+      ],
+      "takes": [
+        "T-final",
+        "T-borges-2",
+        "T-agnolo-3",
+        "T-agnolo-1",
+        "T-borges-1",
+        "T-agnolo-2",
+        "T-borges-3"
+      ],
+      "ranked_own_origin": [
+        "P-84fcf563",
+        "P-a82f2900",
+        "P-7877785c",
+        "P-d54450f2",
+        "P-51ca299b"
+      ]
+    },
+    {
+      "voter": "agnolo",
+      "blind_labels": {
+        "ideas": {
+          "A": "P-21badfde",
+          "B": "P-24e3c551",
+          "C": "P-12dd42a6",
+          "D": "P-84fcf563",
+          "E": "P-51ca299b",
+          "F": "P-a82f2900",
+          "G": "P-9b0f0115",
+          "H": "P-22f1dcc6",
+          "I": "P-7877785c",
+          "J": "P-d54450f2"
+        },
+        "takes": {
+          "A": "T-borges-3",
+          "B": "T-leonardo-3",
+          "C": "T-leonardo-1",
+          "D": "T-final",
+          "E": "T-borges-2",
+          "F": "T-leonardo-2",
+          "G": "T-borges-1"
+        }
+      },
+      "ideas": [
+        "P-51ca299b",
+        "P-9b0f0115",
+        "P-24e3c551",
+        "P-12dd42a6",
+        "P-d54450f2",
+        "P-21badfde",
+        "P-a82f2900",
+        "P-7877785c",
+        "P-84fcf563",
+        "P-22f1dcc6"
+      ],
+      "takes": [
+        "T-borges-3",
+        "T-borges-1",
+        "T-final",
+        "T-leonardo-3",
+        "T-leonardo-1",
+        "T-borges-2",
+        "T-leonardo-2"
+      ],
+      "ranked_own_origin": [
+        "P-51ca299b",
+        "P-9b0f0115",
+        "P-a82f2900",
+        "P-84fcf563"
+      ]
+    }
+  ]
+}
